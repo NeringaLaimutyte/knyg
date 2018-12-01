@@ -1,5 +1,5 @@
 ﻿<?php
-class Zanrai{
+class Zanras{
     public $id;
     public $pavadinimas;
     public $mysqli;
