@@ -1,5 +1,5 @@
 ﻿<?php
-class Autoriai{
+class Autorius{
     public $id;
     public $vardas;
     public $pavarde;
