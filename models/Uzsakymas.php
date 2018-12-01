@@ -1,5 +1,5 @@
 ﻿<?php
-class Uzsakymai{
+class Uzsakymas{
     public $id;
     public $kiekis;
     public $fk_Knyga;
