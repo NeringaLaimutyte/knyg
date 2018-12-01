@@ -1,5 +1,5 @@
 ﻿<?php
-class Knygu_sarasai{
+class Knygu_sarasas{
     public $id;
     public $data;
     public $fk_Leidykla;
