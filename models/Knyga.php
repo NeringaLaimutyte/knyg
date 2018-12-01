@@ -1,5 +1,5 @@
 ﻿<?php
-class Knygos{
+class Knyga{
     public $id;
     public $pavadinimas;
     public $isleidimo_metai;
