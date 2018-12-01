@@ -16,17 +16,4 @@ class Leidykla{
         $this->gatve = $gatve;
         $this->namo_numeris = $namo_numeris;
     }
-    //Paima 1 elementą iš duombazės pagal jo ID
-    public function select($id){
-        $query =  "SELECT * FROM Leidykla WHERE id = ".$id;
-        if($result = mysqli_query($this->mysqli, $query)) {
-            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-            $this->id = $row['id'];
-            $this->pavadinimas = $row['pavadinimas'];
-            $this->pavadinimas = $row['miestas'];
-            $this->el_pasto_adresas = $row['el_pasto_adresas'];
-            $this->gatve = $row['gatve'];
-            $this->namo_numeris = $row['namo_numeris'];
-        }
-    }
 }
