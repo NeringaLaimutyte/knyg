@@ -1,7 +1,8 @@
 <?php
-include_once("../configuration/config.php");
+include_once("configuration/config.php");
 //Paima 1 elementą iš duombazės pagal jo ID
 function selectNaujienos($id){
+    global $mysqli;
     $query =  "SELECT * FROM Naujienos WHERE id = ".$id;
     if($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -12,6 +13,7 @@ function selectNaujienos($id){
 }
 //Paima daug elemetų iš duombazės pagal pateiktą sąlygą
 function selectManyNaujienos($object, $where = null){
+    global $mysqli;
     if($where == null){
         $where = "";
     }else{
@@ -30,6 +32,7 @@ function selectManyNaujienos($object, $where = null){
 }
 //Įterpia elementą į duombazę
 function insertNaujienos($object){
+    global $mysqli;
     $query =  "INSERT INTO Naujienos (pavadinimas, tekstas, parasymo_data, publikavimo_data) VALUE (
           '".mysqli_real_escape_string($mysqli, $object->pavadinimas)."', 
           '".mysqli_real_escape_string($mysqli, $object->tekstas)."', 
@@ -41,6 +44,7 @@ function insertNaujienos($object){
 }
 //Atnaujina elementą duombazėje
 function updateNaujienos($object){
+    global $mysqli;
     $query = "UPDATE Naujienos SET 
           pavadinimas='".$object->pavadinimas."',
           tekstas='".$object->tekstas."',
@@ -51,6 +55,7 @@ function updateNaujienos($object){
 }
 //Ištrina elementą iš duombazės
 function removeNaujienos($object){
+    global $mysqli;
     $query = "DELETE FROM Naujienos WHERE id = ".$object->id;
     mysqli_query($mysqli, $query);
 }
