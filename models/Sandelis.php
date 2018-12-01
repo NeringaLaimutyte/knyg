@@ -1,5 +1,5 @@
 ﻿<?php
-class Sandeliai{
+class Sandelis{
     public $id;
     public $pavadinimas;
     public $gatve;
