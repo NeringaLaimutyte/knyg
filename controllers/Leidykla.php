@@ -3,7 +3,7 @@
 include_once("configuration/config.php");
 
 //Paima 1 elementą iš duombazės pagal jo ID
-function select($id) {
+function selectLeidykla($id) {
     global $mysqli;
     $query = "SELECT * FROM Leidykla WHERE id = " . $id;
     if ($result = mysqli_query($this->mysqli, $query)) {
@@ -15,7 +15,7 @@ function select($id) {
 }
 
 //Paima daug elemetų iš duombazės pagal pateiktą sąlygą
-function selectMany($object, $where = null) {
+function selectManyLeidykla($object, $where = null) {
     global $mysqli;
     if ($where == null) {
         $where = "";
@@ -35,7 +35,7 @@ function selectMany($object, $where = null) {
 }
 
 //Įterpia elementą į duombazę
-function insert($object) {
+function insertLeidykla($object) {
     global $mysqli;
     $query = "INSERT INTO Leidykla (pavadinimas, miestas, el_pasto_adresas, gatve, namo_numeris) VALUE (
           '" . mysqli_real_escape_string($this->mysqli, $this->pavadinimas) . "', 
@@ -49,7 +49,7 @@ function insert($object) {
 }
 
 //Atnaujina elementą duombazėje
-function update($object) {
+function updateLeidykla($object) {
     global $mysqli;
     $query = "UPDATE Leidykla SET 
           pavadinimas='" . $this->pavadinimas . "',
@@ -62,7 +62,7 @@ function update($object) {
 }
 
 //Ištrina elementą iš duombazės
-function remove($object) {
+function removeLeidykla($object) {
     global $mysqli;
     $query = "DELETE FROM Leidykla WHERE id = " . $this->id;
     mysqli_query($this->mysqli, $query);
