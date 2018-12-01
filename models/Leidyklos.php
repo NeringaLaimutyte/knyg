@@ -1,5 +1,5 @@
 ﻿<?php
-class Leidykla{
+class Leidyklos{
     public $id;
     public $pavadinimas;
     public $miestas;
