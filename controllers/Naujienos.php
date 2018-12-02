@@ -10,6 +10,7 @@ function selectNaujienos($id){
         $temp->id = $row['id'];
         return $temp;
     }
+    return null;
 }
 //Paima daug elemetų iš duombazės pagal pateiktą sąlygą
 function selectManyNaujienos($object, $where = null){
@@ -19,16 +20,16 @@ function selectManyNaujienos($object, $where = null){
     }else{
         $where = " WHERE ".$where;
     }
-    $result = [];
+    $results = [];
     $query = "SELECT * FROM Naujienos".$where;
     if($result = mysqli_query($mysqli, $query)) {
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $temp = new Naujienos($row['pavadinimas'], $row['tekstas'], $row['parasymo_data'], $row['publikavimo_data']);
             $temp->id = $row['id'];
-            $result[] = $temp;
+            $results[] = $temp;
         }
     }
-    return $result;
+    return $results;
 }
 //Įterpia elementą į duombazę
 function insertNaujienos($object){

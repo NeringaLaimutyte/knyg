@@ -23,16 +23,16 @@ function selectManyLeidykla($where = null) {
     } else {
         $where = " WHERE " . $where;
     }
-    $result = [];
+    $results = [];
     $query = "SELECT * FROM Leidykla" . $where;
     if ($result = mysqli_query($mysqli, $query)) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $temp = new Leidykla($row['pavadinimas'], $row['miestas'], $row['el_pasto_adresas'], $row['gatve'], $row['namo_numeris']);
             $temp->id = $row['id'];
-            $result[] = $temp;
+            $results[] = $temp;
         }
     }
-    return $result;
+    return $results;
 }
 
 //Įterpia elementą į duombazę

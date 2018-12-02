@@ -24,17 +24,17 @@ function selectManyKnyga($where = null) {
     } else {
         $where = " WHERE " . $where;
     }
-    $result = [];
+    $results = [];
     $query = "SELECT * FROM Knyga" . $where;
     if ($result = mysqli_query($mysqli, $query)) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $temp = new Knyga($row['pavadinimas'], $row['isleidimo_metai'], $row['kalba'], $row['paveikslelio_nuoroda'],
                 $row['aprasymas'], $row['puslapiu_skaicius'], $row['ISBN_kodas'], $row['virselio_tipas'], $row['recenzija']);
             $temp->id = $row['id'];
-            $result[] = $temp;
+            $results[] = $temp;
         }
     }
-    return $result;
+    return $results;
 }
 
 //Įterpia elementą į duombazę
