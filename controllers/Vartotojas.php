@@ -21,17 +21,17 @@ function selectManyVartotojas($where = null){
     }else{
         $where = " WHERE ".$where;
     }
-    $result = [];
+    $results = [];
     $query = "SELECT * FROM Vartotojas".$where;
     if($result = mysqli_query($mysqli, $query)) {
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $temp = new Vartotojas($row['vardas'], $row['pavarde'], $row['el_pastas'], $row['adresas'], $row['role'],
                 $row['isleista_pinigu'], $row['nupirkta_knygu'], $row['bonus_pinigai'], $row['nuolaida'], $row['bonus_narys']);
             $temp->id = $row['id'];
-            $result[] = $temp;
+            $results[] = $temp;
         }
     }
-    return $result;
+    return $results;
 }
 //Įterpia elementą į duombazę
 function insertVartotojas($object, $password){

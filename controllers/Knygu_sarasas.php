@@ -23,16 +23,16 @@ function selectManyKnyguSarasas($where = null) {
     } else {
         $where = " WHERE " . $where;
     }
-    $result = [];
+    $results = [];
     $query = "SELECT * FROM Knygu_sarasas" . $where;
     if ($result = mysqli_query($mysqli, $query)) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $temp = new Knygu_sarasas($row['data'], $row['fk_Leidykla'], $row['fk_Sandelis']);
             $temp->id = $row['id'];
-            $result[] = $temp;
+            $results[] = $temp;
         }
     }
-    return $result;
+    return $results;
 }
 
 //Įterpia elementą į duombazę

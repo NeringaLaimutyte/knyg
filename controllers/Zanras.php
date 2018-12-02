@@ -23,16 +23,16 @@ function selectManyZanras($where = null) {
     } else {
         $where = " WHERE " . $where;
     }
-    $result = [];
+    $results = [];
     $query = "SELECT * FROM zanras" . $where;
     if ($result = mysqli_query($mysqli, $query)) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $temp = new Zanras($row['pavadinimas']);
             $temp->id = $row['id'];
-            $result[] = $temp;
+            $results[] = $temp;
         }
     }
-    return $result;
+    return $results;
 }
 
 //Įterpia elementą į duombazę
