@@ -157,6 +157,7 @@ CREATE TABLE zanrai
 	fk_zanras integer,
 	PRIMARY KEY(fk_Knyga, fk_zanras),
 	CONSTRAINT priklauso FOREIGN KEY(fk_Knyga) REFERENCES Knyga (id)
+	CONSTRAINT priklauso FOREIGN KEY(fk_zanras) REFERENCES zanras(id)
 );
 
 CREATE TABLE Autoriai
