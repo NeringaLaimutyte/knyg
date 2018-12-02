@@ -6,7 +6,7 @@
 <body>
 
 <?php
-    include 'meniu.html';
+    include 'meniu.php';
 ?>
 <h1>Sveiki atvykę į</h1>
 <h1>TIESIOG KNYGYNAS</h1>
