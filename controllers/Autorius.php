@@ -6,16 +6,17 @@ include_once("configuration/config.php");
 function selectAutorius($id) {
     global $mysqli;
     $query = "SELECT * FROM Autorius WHERE id = " . $id;
-    if ($result = mysqli_query($this->mysqli, $query)) {
+    if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        $temp = new Autoriai($row['vardas'], $row['pavarde'], $row['biografija']);
+        $temp = new Autorius($row['vardas'], $row['pavarde'], $row['biografija']);
         $temp->id = $row['id'];
         return $temp;
     }
+    return null;
 }
 
 //Paima daug elemetų iš duombazės pagal pateiktą sąlygą
-function selectManyAutorius($object, $where = null) {
+function selectManyAutorius($where = null) {
     global $mysqli;
     if ($where == null) {
         $where = "";
@@ -24,7 +25,7 @@ function selectManyAutorius($object, $where = null) {
     }
     $result = [];
     $query = "SELECT * FROM Autorius" . $where;
-    if ($result = mysqli_query($this->mysqli, $query)) {
+    if ($result = mysqli_query($mysqli, $query)) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $temp = new Autorius($row['vardas'], $row['pavarde'], $row['biografija ']);
             $temp->id = $row['id'];
@@ -37,30 +38,29 @@ function selectManyAutorius($object, $where = null) {
 //Įterpia elementą į duombazę
 function insertAutorius($object) {
     global $mysqli;
-    $query = "INSERT INTO Autorius (vardas, pavarde, biografija , namo_numeris ) VALUE (
-          '" . mysqli_real_escape_string($this->mysqli, $this->vardas) . "', 
-          '" . mysqli_real_escape_string($this->mysqli, $this->pavarde) . "', 
-          '" . mysqli_real_escape_string($this->mysqli, $this->biografija) . "
-          
+    $query = "INSERT INTO Autorius (vardas, pavarde, biografija) VALUE (
+          '" . mysqli_real_escape_string($mysqli, $object->vardas) . "', 
+          '" . mysqli_real_escape_string($mysqli, $object->pavarde) . "',
+          '" . mysqli_real_escape_string($mysqli, $object->biografija) . "'          
         )";
-    mysqli_query($this->mysqli, $query);
+    mysqli_query($mysqli, $query);
 }
 
 //Atnaujina elementą duombazėje
 function updateAutorius($object) {
     global $mysqli;
     $query = "UPDATE Autorius SET 
-          vardas='" . $this->vardas . "',
-          pavarde='" . $this->pavarde . "',
-          biografija ='" . $this->biografija . "'
-          WHERE id = " . $this->id;
-    mysqli_query($this->mysqli, $query);
+          vardas='" . $object->vardas . "',
+          pavarde='" . $object->pavarde . "',
+          biografija ='" . $object->biografija . "'
+          WHERE id = " . $object->id;
+    mysqli_query($mysqli, $query);
 }
 
 //Ištrina elementą iš duombazės
 function removeAutorius($object) {
     global $mysqli;
-    $query = "DELETE FROM Autorius WHERE id = " . $this->id;
-    mysqli_query($this->mysqli, $query);
+    $query = "DELETE FROM Autorius WHERE id = " . $object->id;
+    mysqli_query($mysqli, $query);
 }
 ?>

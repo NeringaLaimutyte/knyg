@@ -6,16 +6,17 @@ include_once("configuration/config.php");
 function selectSandelis($id) {
     global $mysqli;
     $query = "SELECT * FROM Sandelis WHERE id = " . $id;
-    if ($result = mysqli_query($this->mysqli, $query)) {
+    if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        $temp = new Naujienos($row['pavadinimas'], $row['gatve'], $row['miestas'], $row['namo_numeris']);
+        $temp = new Sandelis($row['pavadinimas'], $row['gatve'], $row['miestas'], $row['namo_numeris']);
         $temp->id = $row['id'];
         return $temp;
     }
+    return null;
 }
 
 //Paima daug elemetų iš duombazės pagal pateiktą sąlygą
-function selectManySandelis($object, $where = null) {
+function selectManySandelis($where = null) {
     global $mysqli;
     if ($where == null) {
         $where = "";
@@ -24,7 +25,7 @@ function selectManySandelis($object, $where = null) {
     }
     $result = [];
     $query = "SELECT * FROM Sandelis" . $where;
-    if ($result = mysqli_query($this->mysqli, $query)) {
+    if ($result = mysqli_query($mysqli, $query)) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $temp = new Sandelis($row['pavadinimas'], $row['gatve'], $row['miestas '], $row['namo_numeris ']);
             $temp->id = $row['id'];
@@ -38,32 +39,31 @@ function selectManySandelis($object, $where = null) {
 function insertSandelis($object) {
     global $mysqli;
     $query = "INSERT INTO Sandelis (pavadinimas, gatve, miestas , namo_numeris ) VALUE (
-          '" . mysqli_real_escape_string($this->mysqli, $this->pavadinimas) . "', 
-          '" . mysqli_real_escape_string($this->mysqli, $this->gatve) . "', 
-          '" . mysqli_real_escape_string($this->mysqli, $this->miestas) . "', 
-          " . mysqli_real_escape_string($this->mysqli, $this->namo_numeris) . "
-          
+          '" . mysqli_real_escape_string($mysqli, $object->pavadinimas) . "', 
+          '" . mysqli_real_escape_string($mysqli, $object->gatve) . "', 
+          '" . mysqli_real_escape_string($mysqli, $object->miestas) . "', 
+          '" . mysqli_real_escape_string($mysqli, $object->namo_numeris) . "'          
         )";
-    mysqli_query($this->mysqli, $query);
+    mysqli_query($mysqli, $query);
 }
 
 //Atnaujina elementą duombazėje
 function updateSandelis($object) {
     global $mysqli;
     $query = "UPDATE Sandelis SET 
-          pavadinimas='" . $this->pavadinimas . "',
-          gatve='" . $this->gatve . "',
-          miestas ='" . $this->miestas . "',
-          namo_numeris ='" . $this->namo_numeris . "'
-          WHERE id = " . $this->id;
-    mysqli_query($this->mysqli, $query);
+          pavadinimas='" . $object->pavadinimas . "',
+          gatve='" . $object->gatve . "',
+          miestas ='" . $object->miestas . "',
+          namo_numeris ='" . $object->namo_numeris . "'
+          WHERE id = " . $object->id;
+    mysqli_query($mysqli, $query);
 }
 
 //Ištrina elementą iš duombazės
 function removeSandelis($object) {
     global $mysqli;
-    $query = "DELETE FROM Sandelis WHERE id = " . $this->id;
-    mysqli_query($this->mysqli, $query);
+    $query = "DELETE FROM Sandelis WHERE id = " . $object->id;
+    mysqli_query($mysqli, $query);
 }
 
 ?>

@@ -6,16 +6,17 @@ include_once("configuration/config.php");
 function selectKnyguSandelyje($id) {
     global $mysqli;
     $query = "SELECT * FROM Knygu_sandelyje WHERE id = " . $id;
-    if ($result = mysqli_query($this->mysqli, $query)) {
+    if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        $temp = new Naujienos($row['kiekis'], $row['fk_Sandelis'], $row['fk_Knyga']);
+        $temp = new Knygu_sandelyje($row['kiekis'], $row['fk_Sandelis'], $row['fk_Knyga']);
         $temp->id = $row['id'];
         return $temp;
     }
+    return null;
 }
 
 //Paima daug elemetų iš duombazės pagal pateiktą sąlygą
-function selectManyKnyguSandelyje($object, $where = null) {
+function selectManyKnyguSandelyje($where = null) {
     global $mysqli;
     if ($where == null) {
         $where = "";
@@ -24,7 +25,7 @@ function selectManyKnyguSandelyje($object, $where = null) {
     }
     $result = [];
     $query = "SELECT * FROM Knygu_sandelyje" . $where;
-    if ($result = mysqli_query($this->mysqli, $query)) {
+    if ($result = mysqli_query($mysqli, $query)) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $temp = new Knygu_sandelyje($row['kiekis'], $row['fk_Sandelis'], $row['fk_Knyga ']);
             $temp->id = $row['id'];
@@ -37,31 +38,30 @@ function selectManyKnyguSandelyje($object, $where = null) {
 //Įterpia elementą į duombazę
 function insertKnyguSandelyje($object) {
     global $mysqli;
-    $query = "INSERT INTO Knygu_sandelyje (kiekis, fk_Sandelis, fk_Knyga , namo_numeris ) VALUE (
-          '" . mysqli_real_escape_string($this->mysqli, $this->kiekis) . "', 
-          '" . mysqli_real_escape_string($this->mysqli, $this->fk_Sandelis) . "', 
-          '" . mysqli_real_escape_string($this->mysqli, $this->fk_Knyga) . "
-          
+    $query = "INSERT INTO Knygu_sandelyje (kiekis, fk_Sandelis, fk_Knyga) VALUE (
+          " . mysqli_real_escape_string($mysqli, $object->kiekis) . ", 
+          " . mysqli_real_escape_string($mysqli, $object->fk_Sandelis) . ", 
+          " . mysqli_real_escape_string($mysqli, $object->fk_Knyga) . "          
         )";
-    mysqli_query($this->mysqli, $query);
+    mysqli_query($mysqli, $query);
 }
 
 //Atnaujina elementą duombazėje
 function updateKnyguSandelyje($object) {
     global $mysqli;
     $query = "UPDATE Knygu_sandelyje SET 
-          kiekis='" . $this->kiekis . "',
-          fk_Sandelis='" . $this->fk_Sandelis . "',
-          fk_Knyga ='" . $this->fk_Knyga . "'
-          WHERE id = " . $this->id;
-    mysqli_query($this->mysqli, $query);
+          kiekis=" . $object->kiekis . ",
+          fk_Sandelis=" . $object->fk_Sandelis . ",
+          fk_Knyga =" . $object->fk_Knyga . "
+          WHERE id = " . $object->id;
+    mysqli_query($mysqli, $query);
 }
 
 //Ištrina elementą iš duombazės
 function removeKnyguSandelyje($object) {
     global $mysqli;
-    $query = "DELETE FROM Knygu_sandelyje WHERE id = " . $this->id;
-    mysqli_query($this->mysqli, $query);
+    $query = "DELETE FROM Knygu_sandelyje WHERE id = " . $object->id;
+    mysqli_query($mysqli, $query);
 }
 
 ?>

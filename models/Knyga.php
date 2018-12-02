@@ -10,11 +10,9 @@ class Knyga{
     public $ISBN_kodas;
     public $virselio_tipas;
     public $recenzija;
-    public $mysqli;
     //Naujienos konstruktorius.
-    function __construct($mysqli, $pavadinimas = '', $isleidimo_metai = '', $kalba = '', $paveikslelio_nuoroda = '', 
-            $aprasymas = '', $puslapiu_skaicius = '', $ISBN_kodas = '', $virselio_tipas = '', $recenzija = '') {
-        $this->mysqli = $mysqli;
+    function __construct($pavadinimas = '', $isleidimo_metai = 0, $kalba = '', $paveikslelio_nuoroda = '',
+            $aprasymas = '', $puslapiu_skaicius = 0, $ISBN_kodas = '', $virselio_tipas = '', $recenzija = '') {
         $this->pavadinimas = $pavadinimas;
         $this->isleidimo_metai = $isleidimo_metai;
         $this->kalba = $kalba;

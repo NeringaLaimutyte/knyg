@@ -2,10 +2,8 @@
 class Zanras{
     public $id;
     public $pavadinimas;
-    public $mysqli;
     //zanras konstruktorius.
-    function __construct($mysqli, $pavadinimas = '') {
-        $this->mysqli = $mysqli;
+    function __construct($pavadinimas = '') {
         $this->pavadinimas = $pavadinimas;
     }
 }

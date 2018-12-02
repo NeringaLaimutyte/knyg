@@ -6,16 +6,17 @@ include_once("configuration/config.php");
 function selectZanras($id) {
     global $mysqli;
     $query = "SELECT * FROM zanras WHERE id = " . $id;
-    if ($result = mysqli_query($this->mysqli, $query)) {
+    if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        $temp = new Naujienos($row['pavadinimas']);
+        $temp = new Zanras($row['pavadinimas']);
         $temp->id = $row['id'];
         return $temp;
     }
+    return null;
 }
 
 //Paima daug elemetų iš duombazės pagal pateiktą sąlygą
-function selectManyZanras($object, $where = null) {
+function selectManyZanras($where = null) {
     global $mysqli;
     if ($where == null) {
         $where = "";
@@ -24,9 +25,9 @@ function selectManyZanras($object, $where = null) {
     }
     $result = [];
     $query = "SELECT * FROM zanras" . $where;
-    if ($result = mysqli_query($this->mysqli, $query)) {
+    if ($result = mysqli_query($mysqli, $query)) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $temp = new zanras($row['pavadinimas']);
+            $temp = new Zanras($row['pavadinimas']);
             $temp->id = $row['id'];
             $result[] = $temp;
         }
@@ -38,26 +39,25 @@ function selectManyZanras($object, $where = null) {
 function insertZanras($object) {
     global $mysqli;
     $query = "INSERT INTO zanras (pavadinimas) VALUE (
-          '" . mysqli_real_escape_string($this->mysqli, $this->pavadinimas) . "
-          
+          '" . mysqli_real_escape_string($mysqli, $object->pavadinimas) . "'          
         )";
-    mysqli_query($this->mysqli, $query);
+    mysqli_query($mysqli, $query);
 }
 
 //Atnaujina elementą duombazėje
 function updateZanras($object) {
     global $mysqli;
     $query = "UPDATE zanras SET 
-          pavadinimas='" . $this->pavadinimas . "'
-          WHERE id = " . $this->id;
-    mysqli_query($this->mysqli, $query);
+          pavadinimas='" . $object->pavadinimas . "'
+          WHERE id = " . $object->id;
+    mysqli_query($mysqli, $query);
 }
 
 //Ištrina elementą iš duombazės
 function removeZanras($object) {
     global $mysqli;
-    $query = "DELETE FROM zanras WHERE id = " . $this->id;
-    mysqli_query($this->mysqli, $query);
+    $query = "DELETE FROM zanras WHERE id = " . $object->id;
+    mysqli_query($mysqli, $query);
 }
 
 ?>

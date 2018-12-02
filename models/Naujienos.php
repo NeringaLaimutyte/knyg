@@ -5,10 +5,8 @@ class Naujienos{
     public $tekstas;
     public $parasymo_data;
     public $publikavimo_data;
-    public $mysqli;
     //Naujienos konstruktorius.
-    function __construct($mysqli, $pavadinimas = '', $tekstas = '', $parasymo_data = '', $publikavimo_data = '') {
-        $this->mysqli = $mysqli;
+    function __construct($pavadinimas = '', $tekstas = '', $parasymo_data = '', $publikavimo_data = '') {
         $this->pavadinimas = $pavadinimas;
         $this->tekstas = $tekstas;
         $this->parasymo_data = $parasymo_data;
