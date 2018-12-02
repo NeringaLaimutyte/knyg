@@ -68,11 +68,12 @@ CREATE TABLE Vartotojas
 	vardas varchar (255)  CHARACTER SET utf8 COLLATE utf8_bin,
 	pavarde varchar (255)  CHARACTER SET utf8 COLLATE utf8_bin,
 	el_pastas varchar (255)  CHARACTER SET utf8 COLLATE utf8_bin,
+	slaptazodis varchar (255)  CHARACTER SET utf8 COLLATE utf8_bin,
 	adresas varchar (255)  CHARACTER SET utf8 COLLATE utf8_bin,
 	role int,
-	isleista_pinigu double precision,
+	isleista_pinigu double,
 	nupirkta_knygu int,
-	bonus_pinigai double precision,
+	bonus_pinigai double,
 	nuolaida int,
 	bonus_narys boolean,
 	PRIMARY KEY(id)
@@ -156,8 +157,13 @@ CREATE TABLE zanrai
 	fk_Knyga integer,
 	fk_zanras integer,
 	PRIMARY KEY(fk_Knyga, fk_zanras),
+<<<<<<< HEAD
 	CONSTRAINT priklauso FOREIGN KEY(fk_Knyga) REFERENCES Knyga (id)
 	CONSTRAINT priklauso FOREIGN KEY(fk_zanras) REFERENCES zanras(id)
+=======
+	CONSTRAINT priklauso FOREIGN KEY(fk_Knyga) REFERENCES Knyga (id),
+	CONSTRAINT priklauso1 FOREIGN KEY(fk_zanras) REFERENCES zanras (id)
+>>>>>>> 1abbaa2266b6ec20f847e694bf126f2a80889c28
 );
 
 CREATE TABLE Autoriai
