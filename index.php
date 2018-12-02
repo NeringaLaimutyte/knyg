@@ -89,7 +89,7 @@ h1 {
 <body>
 
 <?php
-    include 'meniu.php';
+    include 'meniu.html';
 ?>
 <h1>Sveiki atvykę į</h1>
 <h1>TIESIOG KNYGYNAS</h1>
