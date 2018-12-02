@@ -36,7 +36,7 @@ function selectManyVartotojas($where = null){
 //Įterpia elementą į duombazę
 function insertVartotojas($object, $password){
     global $mysqli;
-    echo $query =  "INSERT INTO Vartotojas (vardas, pavarde, el_pastas, slaptazodis, adresas, role, isleista_pinigu, nupirkta_knygu, 
+    $query =  "INSERT INTO Vartotojas (vardas, pavarde, el_pastas, slaptazodis, adresas, role, isleista_pinigu, nupirkta_knygu, 
       bonus_pinigai, nuolaida, bonus_narys) VALUE (
           '".mysqli_real_escape_string($mysqli, $object->vardas)."',
           '".mysqli_real_escape_string($mysqli, $object->pavarde)."',
