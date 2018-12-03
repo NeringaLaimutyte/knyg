@@ -137,7 +137,7 @@ CREATE TABLE Logas
 	data date,
 	IP varchar (255)  CHARACTER SET utf8 COLLATE utf8_bin,
 	URL varchar (255)  CHARACTER SET utf8 COLLATE utf8_bin,
-	laikas date,
+	laikas time,
 	fk_Vartotojas integer NOT NULL,
 	PRIMARY KEY(id),
 	CONSTRAINT padaro FOREIGN KEY(fk_Vartotojas) REFERENCES Vartotojas (id)
@@ -191,3 +191,7 @@ CREATE TABLE Vartotojo_uzsakymas
 	CONSTRAINT itrauktas_i_uzsakyma FOREIGN KEY(fk_Prekiu_sarasas) REFERENCES Prekiu_sarasas (id),
 	CONSTRAINT uzsako_preke FOREIGN KEY(fk_Knyga) REFERENCES Knyga (id)
 );
+INSERT INTO `Vartotojas` (`id`, `vardas`, `pavarde`, `el_pastas`, `slaptazodis`, `adresas`, `role`, `isleista_pinigu`, `nupirkta_knygu`, `bonus_pinigai`, `nuolaida`, `bonus_narys`)
+VALUES ('0', '', '', '', '****', '', '0', '0', '0', '0', '0', '0');
+UPDATE `Vartotojas` SET `id` = 0 WHERE `Vartotojas`.`slaptazodis` = '****';
+ALTER TABLE `Vartotojas` auto_increment = 1;
