@@ -25,7 +25,8 @@
 </head>
 <body>    
 <?php
-   include 'meniu.php';
+    include_once 'log.php';
+    include 'meniu.php';
 ?>
 <h1>Knygos</h1>
 <?php
@@ -48,7 +49,6 @@
         <div><?php echo $knygos[$i]->pavadinimas;?></div>
         <div><?php echo $knygos[$i]->aprasymas;?></div>
     </span>
-    <span >
     <span class="container">
         <div>Išleidimo metai: <?php echo $knygos[$i]->isleidimo_metai;?></div>
         <div>Kalba: <?php echo $knygos[$i]->kalba;?></div>

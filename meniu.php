@@ -14,6 +14,9 @@ include_once 'models/Vartotojas.php';
         if($_SESSION['user']->getRoles()[0]){
             $array[] = [$_SESSION['user']->vardas, '#'];
         }
+        if($_SESSION['user']->getRoles()[3]){
+            $array[] = ['Admin panelė', 'admin.php'];
+        }
     }
     $array[] = ['Naujienos', '#'];
     $array[] = ['Knygų paieška', '#'];

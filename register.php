@@ -1,4 +1,5 @@
 <?php
+include_once 'log.php';
 include_once 'configuration/config.php';
 include_once 'models/Vartotojas.php';
 include_once 'controllers/Vartotojas.php';
