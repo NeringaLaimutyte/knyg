@@ -13,7 +13,7 @@
 <span class="container">
     <img src="images/knygos.jpg" alt="knygos" class="image" >
     <div class="middle">
-      <a href="#" class="button">Knygos</a>
+      <a href="knygos.php" class="button">Knygos</a>
     </div>
   </span>
   <span class="container">
