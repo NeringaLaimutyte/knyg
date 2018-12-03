@@ -4,7 +4,9 @@ include_once 'models/Vartotojas.php';
 <ul>
     <li ><a href="index.php">TIESIOG KNYGYNAS</a></li>
   <?php
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     $array = [];
     if(!isset($_SESSION['user'])) {
         $array[] = ['Prisijungti', 'login.php'];
@@ -18,7 +20,7 @@ include_once 'models/Vartotojas.php';
             $array[] = ['Admin panelė', 'admin.php'];
         }
     }
-    $array[] = ['Naujienos', '#'];
+    $array[] = ['Naujienos', 'naujienos.php'];
     $array[] = ['Knygų paieška', '#'];
     $array[] = ['Knygos', 'knygos.php'];
 

@@ -16,7 +16,7 @@ function selectLogas($id) {
 }
 
 //Paima daug elemetų iš duombazės pagal pateiktą sąlygą
-function selectManyKnyga($where = null) {
+function selectManyLogas($where = null) {
     global $mysqli;
     if ($where == null) {
         $where = "";

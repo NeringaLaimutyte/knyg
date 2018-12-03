@@ -16,19 +16,7 @@ function selectZanrai($fk_Knyga, $fk_zanras) {
     }
     return null;
 }
-//Paima 1 elementą iš duombazės pagal jo fk_Knyga
 
-function selectZanraiPagalKnyga($fk_Knyga) {
-    global $mysqli;
-    $query = "SELECT * FROM zanrai WHERE fk_Knyga = ".mysqli_real_escape_string($mysqli, $fk_Knyga);
-    if ($result = mysqli_query($mysqli, $query)) {
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        $temp = new Zanrai($row['fk_Knyga'], $row['fk_zanras']);
-        /*$temp->id = $row['id']; lentele neturi id*/
-        return $temp;
-    }
-    return null;
-}
 //Paima daug elemetų iš duombazės pagal pateiktą sąlygą
 function selectManyZanrai($where = null) {
     global $mysqli;

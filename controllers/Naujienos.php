@@ -13,7 +13,7 @@ function selectNaujienos($id){
     return null;
 }
 //Paima daug elemetų iš duombazės pagal pateiktą sąlygą
-function selectManyNaujienos($object, $where = null){
+function selectManyNaujienos($where = null){
     global $mysqli;
     if($where == null){
         $where = "";

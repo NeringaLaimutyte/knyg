@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -36,6 +36,8 @@
    include 'controllers/Zanrai.php';
    include 'models/Zanras.php';
    include 'controllers/Zanras.php';
+   include 'models/Kaina.php';
+   include 'controllers/Kaina.php';
    $knygos = selectManyKnyga();
    
    for($i = 0; $i < count($knygos); $i++){
@@ -54,7 +56,7 @@
         <div>Kalba: <?php echo $knygos[$i]->kalba;?></div>
         <div>Žanras:
              <?php 
-                $zanrai = selectManyZanrai(/*"WHERE fk_Knyga = $knygos[$i]->id"*/); 
+                $zanrai = selectManyZanrai("fk_Knyga = ".$knygos[$i]->id); 
                 for($j = 0; $j < count($zanrai); $j++) {
                     $zanras = selectZanras($zanrai[$j]->fk_zanras);
                     echo $zanras->pavadinimas;
@@ -63,7 +65,15 @@
              ?>
         </div>
         <div>ISBN: <?php echo $knygos[$i]->ISBN_kodas;?></div>
-        <div>Kaina: </div>
+        <div>Kaina: <?php
+        if(count($kaina = selectManyKaina("fk_Knyga=".$knygos[$i]->id." AND PrData < NOW() AND PaData > NOW()")) == 1){
+            echo $kaina[0]->kaina;
+        }else{
+            selectManyKaina("fk_Knyga=".$knygos[$i]->id." AND PrData < NOW() AND PaData IS NULL")[0]->kaina;
+        }
+        //SELECT * FROM kaina WHERE fk_Knyga=2 AND PrData < NOW() AND PaData > NOW()
+        //SELECT * FROM kaina WHERE fk_Knyga=2 AND PrData < NOW() AND PaData IS NULL
+        ?></div>
     </span>
 </div>
 <?php
