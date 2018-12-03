@@ -49,6 +49,7 @@
     </span>
     <span class="container">
         <div><?php echo $knygos[$i]->pavadinimas;?></div>
+        <br>
         <div><?php echo $knygos[$i]->aprasymas;?></div>
     </span>
     <span class="container">
@@ -67,9 +68,9 @@
         <div>ISBN: <?php echo $knygos[$i]->ISBN_kodas;?></div>
         <div>Kaina: <?php
         if(count($kaina = selectManyKaina("fk_Knyga=".$knygos[$i]->id." AND PrData < NOW() AND PaData > NOW()")) == 1){
-            echo $kaina[0]->kaina;
+            echo $kaina[0]->kaina." €";
         }else{
-            selectManyKaina("fk_Knyga=".$knygos[$i]->id." AND PrData < NOW() AND PaData IS NULL")[0]->kaina;
+            echo selectManyKaina("fk_Knyga=".$knygos[$i]->id." AND PrData < NOW() AND PaData IS NULL")[0]->kaina ." €";
         }
         //SELECT * FROM kaina WHERE fk_Knyga=2 AND PrData < NOW() AND PaData > NOW()
         //SELECT * FROM kaina WHERE fk_Knyga=2 AND PrData < NOW() AND PaData IS NULL

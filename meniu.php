@@ -13,9 +13,12 @@ include_once 'models/Vartotojas.php';
         $array[] = ['Registruotis', 'register.php'];
     }else{
         $array[] = ['Atsijungti', 'logout.php'];
+        $array[] = ['Krepšelis', 'krepselis.php'];
+        
         if($_SESSION['user']->getRoles()[0]){
-            $array[] = [$_SESSION['user']->vardas, '#'];
+            $array[] = ['Nustatymai', 'nustatymai.php'];
         }
+        $array[] = ['Bonus klubas', 'klubas.php'];
         if($_SESSION['user']->getRoles()[3]){
             $array[] = ['Admin panelė', 'admin.php'];
         }
