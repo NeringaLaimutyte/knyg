@@ -52,19 +52,19 @@ function insertLeidykla($object) {
 function updateLeidykla($object) {
     global $mysqli;
     $query = "UPDATE Leidykla SET 
-          pavadinimas='" . $object->pavadinimas . "',
-          miestas='" . $object->miestas . "',
-          el_pasto_adresas='" . $object->el_pasto_adresas . "',
-          el_pasto_adresas='" . $object->gatve . "',
-          gatve='" . $object->namo_numeris . "'
-          WHERE id = " . $object->id;
+          pavadinimas='" . mysqli_real_escape_string($mysqli, $object->pavadinimas) . "',
+          miestas='" . mysqli_real_escape_string($mysqli, $object->miestas) . "',
+          el_pasto_adresas='" . mysqli_real_escape_string($mysqli, $object->el_pasto_adresas) . "',
+          el_pasto_adresas='" . mysqli_real_escape_string($mysqli, $object->gatve) . "',
+          gatve='" . mysqli_real_escape_string($mysqli, $object->namo_numeris) . "'
+          WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 
 //Ištrina elementą iš duombazės
 function removeLeidykla($object) {
     global $mysqli;
-    $query = "DELETE FROM Leidykla WHERE id = " . $object->id;
+    $query = "DELETE FROM Leidykla WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 

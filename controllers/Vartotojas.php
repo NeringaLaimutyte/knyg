@@ -56,22 +56,22 @@ function insertVartotojas($object, $password){
 function updateVartotojas($object){
     global $mysqli;
     $query = "UPDATE Vartotojas SET 
-          vardas='".$object->vardas."',
-          pavarde='".$object->pavarde."',
-          el_pastas='".$object->el_pastas."',
-          adresas='".$object->adresas."', 
-          role=".$object->role*1 .", 
-          isleista_pinigu=".$object->isleista_pinigu*1 .", 
-          nupirkta_knygu=".$object->nupirkta_knygu*1 .", 
-          bonus_pinigai=".$object->bonus_pinigai*1 .", 
-          nuolaida=".$object->nuolaida*1 .", 
-          bonus_narys=".$object->bonus_narys*1 .", 
-          WHERE id = ".$object->id*1 ;
+          vardas='". mysqli_real_escape_string($mysqli, $object->vardas)."',
+          pavarde='". mysqli_real_escape_string($mysqli, $object->pavarde)."',
+          el_pastas='". mysqli_real_escape_string($mysqli, $object->el_pastas)."',
+          adresas='". mysqli_real_escape_string($mysqli, $object->adresas)."', 
+          role=". mysqli_real_escape_string($mysqli, $object->role)*1 .", 
+          isleista_pinigu=". mysqli_real_escape_string($mysqli, $object->isleista_pinigu)*1 .", 
+          nupirkta_knygu=". mysqli_real_escape_string($mysqli, $object->nupirkta_knygu)*1 .", 
+          bonus_pinigai=". mysqli_real_escape_string($mysqli, $object->bonus_pinigai)*1 .", 
+          nuolaida=". mysqli_real_escape_string($mysqli, $object->nuolaida)*1 .", 
+          bonus_narys=". mysqli_real_escape_string($mysqli, $object->bonus_narys)*1 .", 
+          WHERE id = ". mysqli_real_escape_string($mysqli, $object->id)*1 ;
     mysqli_query($mysqli, $query);
 }
 //Ištrina elementą iš duombazės
 function removeVartotojas($object){
     global $mysqli;
-    $query = "DELETE FROM Naujienos WHERE id = ".$object->id;
+    $query = "DELETE FROM Naujienos WHERE id = ". mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }

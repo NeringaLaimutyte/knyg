@@ -50,17 +50,17 @@ function insertUzsakymas($object) {
 function updateUzsakymas($object) {
     global $mysqli;
     $query = "UPDATE Uzsakymas SET 
-          kiekis=" . $object->kiekis*1 . ",
-          fk_Knyga=" . $object->fk_Knyga*1 . ",
-          fk_Knygu_sarasas =" . $object->fk_Knygu_sarasas*1 . "
-          WHERE id = " . $object->id;
+          kiekis=" . mysqli_real_escape_string($mysqli, $object->kiekis)*1 . ",
+          fk_Knyga=" . mysqli_real_escape_string($mysqli, $object->fk_Knyga)*1 . ",
+          fk_Knygu_sarasas =" . mysqli_real_escape_string($mysqli, $object->fk_Knygu_sarasas)*1 . "
+          WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 
 //Ištrina elementą iš duombazės
 function removeUzsakymas($object) {
     global $mysqli;
-    $query = "DELETE FROM Uzsakymas WHERE id = " . $object->id;
+    $query = "DELETE FROM Uzsakymas WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 

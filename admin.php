@@ -1,5 +1,6 @@
 <?php
 include_once 'log.php';
+logas($_SERVER['REQUEST_URI']);
 include_once 'models/Vartotojas.php';
 session_start();
 if(!isset($_SESSION['user'])) {

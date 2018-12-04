@@ -18,10 +18,12 @@ if(!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[3]) {
 <body>
 <?php
     include 'adminMenu.php';
+    include 'log.php';
+logas($_SERVER['REQUEST_URI']);
 ?>
 <div style="text-align: center">
     <h3>Filtrai:<br /><?php
-        echo 'nuo '. $_GET['nuoD'].' iki '.$_GET['ikiD'].'<br />nuo '.$_GET['nuoL'].' '.$_GET['ikiL'].'<br />
+        echo 'nuo '. $_GET['nuoD'].' iki '.$_GET['ikiD'].'<br />nuo '.$_GET['nuoL'].' iki '.$_GET['ikiL'].'<br />
         IP: '.$_GET['IP'].'<br />URL: '.$_GET['URL'].'<br />Vartotojas: '.$_GET['user'];
         ?></h3>
     <table style="margin-left:auto; margin-right:auto;">
@@ -31,16 +33,16 @@ if(!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[3]) {
         <?php
         $where = [];
         if($_GET['nuoD'] != ''){
-            $where[] = 'data > '.$_GET['nuoD'].'"';
+            $where[] = 'data >= "'.$_GET['nuoD'].'"';
         }
         if($_GET['ikiD'] != ''){
-            $where[] = 'data < "'.$_GET['ikiD'].'"';
+            $where[] = 'data <= "'.$_GET['ikiD'].'"';
         }
         if($_GET['nuoL'] != ''){
-            $where[] = 'laikas > "'.$_GET['nuoL'].'"';
+            $where[] = 'laikas >= "'.$_GET['nuoL'].'"';
         }
         if($_GET['ikiL'] != ''){
-            $where[] = 'laikas < "'.$_GET['ikiL'].'"';
+            $where[] = 'laikas <= "'.$_GET['ikiL'].'"';
         }
         if($_GET['IP'] != ''){
             $where[] = 'IP = "'.$_GET['nuoD'].'"';

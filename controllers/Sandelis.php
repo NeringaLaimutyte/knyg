@@ -51,18 +51,18 @@ function insertSandelis($object) {
 function updateSandelis($object) {
     global $mysqli;
     $query = "UPDATE Sandelis SET 
-          pavadinimas='" . $object->pavadinimas . "',
-          gatve='" . $object->gatve . "',
-          miestas ='" . $object->miestas . "',
-          namo_numeris ='" . $object->namo_numeris . "'
-          WHERE id = " . $object->id;
+          pavadinimas='" . mysqli_real_escape_string($mysqli, $object->pavadinimas) . "',
+          gatve='" . mysqli_real_escape_string($mysqli, $object->gatve) . "',
+          miestas ='" . mysqli_real_escape_string($mysqli, $object->miestas) . "',
+          namo_numeris ='" . mysqli_real_escape_string($mysqli, $object->namo_numeris) . "'
+          WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 
 //Ištrina elementą iš duombazės
 function removeSandelis($object) {
     global $mysqli;
-    $query = "DELETE FROM Sandelis WHERE id = " . $object->id;
+    $query = "DELETE FROM Sandelis WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 

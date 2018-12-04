@@ -17,6 +17,7 @@
 <body>    
 <?php
     include_once 'log.php';
+logas($_SERVER['REQUEST_URI']);
     include 'meniu.php';
 ?>
 <h1>Naujienos</h1>

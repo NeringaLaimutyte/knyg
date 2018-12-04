@@ -12,6 +12,7 @@ include_once 'controllers/Vartotojas.php';
 <div style="text-align: center">
 <?php
 include_once 'log.php';
+logas($_SERVER['REQUEST_URI']);
 include 'meniu.php';
 $form = '
         <form action="login.php" method="post">

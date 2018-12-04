@@ -50,17 +50,17 @@ function insertAutorius($object) {
 function updateAutorius($object) {
     global $mysqli;
     $query = "UPDATE Autorius SET 
-          vardas='" . $object->vardas . "',
-          pavarde='" . $object->pavarde . "',
-          biografija ='" . $object->biografija . "'
-          WHERE id = " . $object->id;
+          vardas='" . mysqli_real_escape_string($mysqli, $object->vardas) . "',
+          pavarde='" . mysqli_real_escape_string($mysqli, $object->pavarde) . "',
+          biografija ='" . mysqli_real_escape_string($mysqli, $object->biografija) . "'
+          WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 
 //Ištrina elementą iš duombazės
 function removeAutorius($object) {
     global $mysqli;
-    $query = "DELETE FROM Autorius WHERE id = " . $object->id;
+    $query = "DELETE FROM Autorius WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 ?>

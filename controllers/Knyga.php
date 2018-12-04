@@ -59,23 +59,23 @@ function insertKnyga($object) {
 function updateKnyga($object) {
     global $mysqli;
     $query = "UPDATE Knyga SET 
-          pavadinimas='" . $object->pavadinimas . "',
-          isleidimo_metai=" . $object->isleidimo_metai*1 . ",
-          kalba='" . $object->kalba . "',
-          paveikslelio_nuoroda='" . $object->paveikslelio_nuoroda . "',
-          aprasymas='" . $object->aprasymas . "',
-          puslapiu_skaicius=" . $object->puslapiu_skaicius*1 . ",
-          ISBN_kodas='" . $object->ISBN_kodas . "',
-          virselio_tipas='" . $object->virselio_tipas . "',
-          recenzija='" . $object->recenzija . "'
-          WHERE id = " . $object->id;
+          pavadinimas='" . mysqli_real_escape_string($mysqli, $object->pavadinimas) . "',
+          isleidimo_metai=" . mysqli_real_escape_string($mysqli, $object->isleidimo_metai)*1 . ",
+          kalba='" . mysqli_real_escape_string($mysqli, $object->kalba) . "',
+          paveikslelio_nuoroda='" . mysqli_real_escape_string($mysqli, $object->paveikslelio_nuoroda) . "',
+          aprasymas='" . mysqli_real_escape_string($mysqli, $object->aprasymas) . "',
+          puslapiu_skaicius=" . mysqli_real_escape_string($mysqli, $object->puslapiu_skaicius)*1 . ",
+          ISBN_kodas='" . mysqli_real_escape_string($mysqli, $object->ISBN_kodas) . "',
+          virselio_tipas='" . mysqli_real_escape_string($mysqli, $object->virselio_tipas) . "',
+          recenzija='" . mysqli_real_escape_string($mysqli, $object->recenzija) . "'
+          WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 
 //Ištrina elementą iš duombazės
 function removeKnyga($object) {
     global $mysqli;
-    $query = "DELETE FROM Knyga WHERE id = " . $object->id;
+    $query = "DELETE FROM Knyga WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 

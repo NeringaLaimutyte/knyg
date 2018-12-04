@@ -48,15 +48,15 @@ function insertZanras($object) {
 function updateZanras($object) {
     global $mysqli;
     $query = "UPDATE zanras SET 
-          pavadinimas='" . $object->pavadinimas . "'
-          WHERE id = " . $object->id;
+          pavadinimas='" . mysqli_real_escape_string($mysqli, $object->pavadinimas) . "'
+          WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 
 //Ištrina elementą iš duombazės
 function removeZanras($object) {
     global $mysqli;
-    $query = "DELETE FROM zanras WHERE id = " . $object->id;
+    $query = "DELETE FROM zanras WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 

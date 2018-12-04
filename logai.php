@@ -29,6 +29,8 @@ if(!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[3]) {
 <body>
 <?php
     include 'adminMenu.php';
+    include 'log.php';
+logas($_SERVER['REQUEST_URI']);
 ?>
 <div style="text-align: center">
     <h2>Pasirinkite filtrus</h2>

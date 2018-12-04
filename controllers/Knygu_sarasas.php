@@ -51,17 +51,17 @@ function insertKnyguSarasas($object) {
 function updateKnyguSarasas($object) {
     global $mysqli;
     $query = "UPDATE Knygu_sarasas SET 
-          data=" . $object->data . ",
-          fk_Leidykla=" . $object->fk_Leidykla*1 . ",
-          fk_Sandelis=" . $object->fk_Sandelis*1 . "
-          WHERE id = " . $object->id;
+          data=" . mysqli_real_escape_string($mysqli, $object->data) . ",
+          fk_Leidykla=" . mysqli_real_escape_string($mysqli, $object->fk_Leidykla)*1 . ",
+          fk_Sandelis=" . mysqli_real_escape_string($mysqli, $object->fk_Sandelis)*1 . "
+          WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 
 //Ištrina elementą iš duombazės
 function removeKnyguSarasas($object) {
     global $mysqli;
-    $query = "DELETE FROM Knygu_sarasas WHERE id = " . $object->id;
+    $query = "DELETE FROM Knygu_sarasas WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 

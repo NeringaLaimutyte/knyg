@@ -52,19 +52,19 @@ function insertKaina($object) {
 function updateKaina($object) {
     global $mysqli;
     $query = "UPDATE Kaina SET 
-          kaina=" . $object->kaina*1 . ",
-          pastaba='" . $object->pastaba . "',
-          PrData='" . $object->PrData . "',
-          PaData='" . $object->PaData . "',
-          fk_Knyga=" . $object->fk_Knyga*1 . "
-          WHERE id = " . $object->id;
+          kaina=" . mysqli_real_escape_string($mysqli, $object->kaina)*1 . ",
+          pastaba='" . mysqli_real_escape_string($mysqli, $object->pastaba) . "',
+          PrData='" . mysqli_real_escape_string($mysqli, $object->PrData) . "',
+          PaData='" . mysqli_real_escape_string($mysqli, $object->PaData) . "',
+          fk_Knyga=" . mysqli_real_escape_string($mysqli, $object->fk_Knyga)*1 . "
+          WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 
 //Ištrina elementą iš duombazės
 function removeKaina($object) {
     global $mysqli;
-    $query = "DELETE FROM Kaina WHERE id = " . $object->id;
+    $query = "DELETE FROM Kaina WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 

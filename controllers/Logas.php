@@ -52,19 +52,19 @@ function insertLogas($object) {
 function updateLogas($object) {
     global $mysqli;
     $query = "UPDATE Logas SET 
-          data='" . $object->data . "',
-          IP=" . $object->IP . ",
-          URL='" . $object->URL . "',
-          laikas='" . $object->laikas . "',
-          fk_Vartotojas=" . $object->fk_Vartotojas*1 . "
-          WHERE id = " . $object->id;
+          data='" . mysqli_real_escape_string($mysqli, $object->data) . "',
+          IP=" . mysqli_real_escape_string($mysqli, $object->IP) . ",
+          URL='" . mysqli_real_escape_string($mysqli, $object->URL) . "',
+          laikas='" . mysqli_real_escape_string($mysqli, $object->laikas) . "',
+          fk_Vartotojas=" . mysqli_real_escape_string($mysqli, $object->fk_Vartotojas)*1 . "
+          WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 
 //Ištrina elementą iš duombazės
 function removeLogas($object) {
     global $mysqli;
-    $query = "DELETE FROM Logas WHERE id = " . $object->id;
+    $query = "DELETE FROM Logas WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 

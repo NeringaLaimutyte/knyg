@@ -47,16 +47,16 @@ function insertNaujienos($object){
 function updateNaujienos($object){
     global $mysqli;
     $query = "UPDATE Naujienos SET 
-          pavadinimas='".$object->pavadinimas."',
-          tekstas='".$object->tekstas."',
-          parasymo_data='".$object->parasymo_data."',
-          publikavimo_data='".$object->publikavimo_data."'
-          WHERE id = ".$object->id;
+          pavadinimas='". mysqli_real_escape_string($mysqli, $object->pavadinimas)."',
+          tekstas='". mysqli_real_escape_string($mysqli, $object->tekstas)."',
+          parasymo_data='". mysqli_real_escape_string($mysqli, $object->parasymo_data)."',
+          publikavimo_data='". mysqli_real_escape_string($mysqli, $object->publikavimo_data)."'
+          WHERE id = ". mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
 //Ištrina elementą iš duombazės
 function removeNaujienos($object){
     global $mysqli;
-    $query = "DELETE FROM Naujienos WHERE id = ".$object->id;
+    $query = "DELETE FROM Naujienos WHERE id = ". mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
