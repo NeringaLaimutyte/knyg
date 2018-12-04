@@ -12,5 +12,5 @@ if(isset($_SESSION['user'])){
 if(!isset($_SERVER['HTTP_REFERER'])){
     $_SERVER['HTTP_REFERER']='';
 }
-$log = new Logas(0, $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_REFERER'], 0, $id);
+$log = new Logas(0, $_SERVER['REMOTE_ADDR'], parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH), 0, $id);
 insertLogas($log);

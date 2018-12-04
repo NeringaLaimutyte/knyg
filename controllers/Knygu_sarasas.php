@@ -40,8 +40,8 @@ function insertKnyguSarasas($object) {
     global $mysqli;
     $query = "INSERT INTO Knygu_sarasas (data, fk_Leidykla, fk_Sandelis) VALUE (
           NOW(), 
-          " . mysqli_real_escape_string($mysqli, $object->fk_Leidykla) . ", 
-          " . mysqli_real_escape_string($mysqli, $object->fk_Sandelis) . "
+          " . mysqli_real_escape_string($mysqli, $object->fk_Leidykla)*1 . ", 
+          " . mysqli_real_escape_string($mysqli, $object->fk_Sandelis)*1 . "
           
         )";
     mysqli_query($mysqli, $query);
@@ -52,8 +52,8 @@ function updateKnyguSarasas($object) {
     global $mysqli;
     $query = "UPDATE Knygu_sarasas SET 
           data=" . $object->data . ",
-          fk_Leidykla=" . $object->fk_Leidykla . ",
-          fk_Sandelis=" . $object->fk_Sandelis . "
+          fk_Leidykla=" . $object->fk_Leidykla*1 . ",
+          fk_Sandelis=" . $object->fk_Sandelis*1 . "
           WHERE id = " . $object->id;
     mysqli_query($mysqli, $query);
 }

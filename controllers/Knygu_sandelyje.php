@@ -39,9 +39,9 @@ function selectManyKnyguSandelyje($where = null) {
 function insertKnyguSandelyje($object) {
     global $mysqli;
     $query = "INSERT INTO Knygu_sandelyje (kiekis, fk_Sandelis, fk_Knyga) VALUE (
-          " . mysqli_real_escape_string($mysqli, $object->kiekis) . ", 
-          " . mysqli_real_escape_string($mysqli, $object->fk_Sandelis) . ", 
-          " . mysqli_real_escape_string($mysqli, $object->fk_Knyga) . "          
+          " . mysqli_real_escape_string($mysqli, $object->kiekis)*1 . ", 
+          " . mysqli_real_escape_string($mysqli, $object->fk_Sandelis)*1 . ", 
+          " . mysqli_real_escape_string($mysqli, $object->fk_Knyga)*1 . "          
         )";
     mysqli_query($mysqli, $query);
 }
@@ -50,9 +50,9 @@ function insertKnyguSandelyje($object) {
 function updateKnyguSandelyje($object) {
     global $mysqli;
     $query = "UPDATE Knygu_sandelyje SET 
-          kiekis=" . $object->kiekis . ",
-          fk_Sandelis=" . $object->fk_Sandelis . ",
-          fk_Knyga =" . $object->fk_Knyga . "
+          kiekis=" . $object->kiekis*1 . ",
+          fk_Sandelis=" . $object->fk_Sandelis*1 . ",
+          fk_Knyga =" . $object->fk_Knyga*1 . "
           WHERE id = " . $object->id;
     mysqli_query($mysqli, $query);
 }

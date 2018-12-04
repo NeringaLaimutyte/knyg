@@ -39,11 +39,11 @@ function selectManyKaina($where = null) {
 function insertKaina($object) {
     global $mysqli;
     $query = "INSERT INTO Kaina (kaina, pastaba, PrData, PaData, fk_Knyga) VALUE (
-          " . mysqli_real_escape_string($mysqli, $object->pavadinimas) . ",  
+          " . mysqli_real_escape_string($mysqli, $object->pavadinimas)*1 . ",  
           '" . mysqli_real_escape_string($mysqli, $object->pastaba) . "',  
-          " . mysqli_real_escape_string($mysqli, date('Y-m-d', strtotime($object->PrData))) . ",  
-          " . mysqli_real_escape_string($mysqli, date('Y-m-d', strtotime($object->PaData))) . ",  
-          " . mysqli_real_escape_string($mysqli, $object->fk_Knyga) . ",          
+          '" . mysqli_real_escape_string($mysqli, date('Y-m-d', strtotime($object->PrData))) . "',  
+          '" . mysqli_real_escape_string($mysqli, date('Y-m-d', strtotime($object->PaData))) . "',  
+          " . mysqli_real_escape_string($mysqli, $object->fk_Knyga)*1 . ",          
         )";
     mysqli_query($mysqli, $query);
 }
@@ -52,11 +52,11 @@ function insertKaina($object) {
 function updateKaina($object) {
     global $mysqli;
     $query = "UPDATE Kaina SET 
-          kaina=" . $object->kaina . ",
+          kaina=" . $object->kaina*1 . ",
           pastaba='" . $object->pastaba . "',
-          PrData=" . $object->PrData . ",
-          PaData=" . $object->PaData . ",
-          fk_Knyga=" . $object->fk_Knyga . "
+          PrData='" . $object->PrData . "',
+          PaData='" . $object->PaData . "',
+          fk_Knyga=" . $object->fk_Knyga*1 . "
           WHERE id = " . $object->id;
     mysqli_query($mysqli, $query);
 }

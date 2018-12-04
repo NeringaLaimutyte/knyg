@@ -52,11 +52,11 @@ function insertLogas($object) {
 function updateLogas($object) {
     global $mysqli;
     $query = "UPDATE Logas SET 
-          data=" . $object->data . ",
+          data='" . $object->data . "',
           IP=" . $object->IP . ",
           URL='" . $object->URL . "',
           laikas='" . $object->laikas . "',
-          fk_Vartotojas=" . $object->fk_Vartotojas . "
+          fk_Vartotojas=" . $object->fk_Vartotojas*1 . "
           WHERE id = " . $object->id;
     mysqli_query($mysqli, $query);
 }

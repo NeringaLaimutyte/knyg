@@ -42,11 +42,11 @@ function insertKnyga($object) {
     global $mysqli;
     $query = "INSERT INTO Knyga (pavadinimas, isleidimo_metai, kalba, paveikslelio_nuoroda, aprasymas, puslapiu_skaicius, ISBN_kodas, virselio_tipas, recenzija) VALUE (
           '" . mysqli_real_escape_string($mysqli, $object->pavadinimas) . "', 
-          " . mysqli_real_escape_string($mysqli, $object->isleidimo_metai) . ", 
+          " . mysqli_real_escape_string($mysqli, $object->isleidimo_metai)*1 . ", 
           '" . mysqli_real_escape_string($mysqli, $object->kalba) . "', 
           '" . mysqli_real_escape_string($mysqli, $object->paveikslelio_nuoroda) . "', 
           '" . mysqli_real_escape_string($mysqli, $object->aprasymas) . "', 
-          " . mysqli_real_escape_string($mysqli, $object->puslapiu_skaicius) . ", 
+          " . mysqli_real_escape_string($mysqli, $object->puslapiu_skaicius)*1 . ", 
           '" . mysqli_real_escape_string($mysqli, $object->ISBN_kodas) . "', 
           '" . mysqli_real_escape_string($mysqli, $object->virselio_tipas) . "', 
           " . mysqli_real_escape_string($mysqli, $object->recenzija) . "
@@ -60,11 +60,11 @@ function updateKnyga($object) {
     global $mysqli;
     $query = "UPDATE Knyga SET 
           pavadinimas='" . $object->pavadinimas . "',
-          isleidimo_metai=" . $object->isleidimo_metai . ",
+          isleidimo_metai=" . $object->isleidimo_metai*1 . ",
           kalba='" . $object->kalba . "',
           paveikslelio_nuoroda='" . $object->paveikslelio_nuoroda . "',
           aprasymas='" . $object->aprasymas . "',
-          puslapiu_skaicius=" . $object->puslapiu_skaicius . ",
+          puslapiu_skaicius=" . $object->puslapiu_skaicius*1 . ",
           ISBN_kodas='" . $object->ISBN_kodas . "',
           virselio_tipas='" . $object->virselio_tipas . "',
           recenzija='" . $object->recenzija . "'

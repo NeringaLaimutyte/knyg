@@ -38,7 +38,7 @@ function insertNaujienos($object){
           '".mysqli_real_escape_string($mysqli, $object->pavadinimas)."', 
           '".mysqli_real_escape_string($mysqli, $object->tekstas)."', 
           NOW(), 
-          ".mysqli_real_escape_string($mysqli, $object->publikavimo_data)."
+          '".mysqli_real_escape_string($mysqli, $object->publikavimo_data)."'
           
         )";
     mysqli_query($mysqli, $query);

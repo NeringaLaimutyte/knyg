@@ -41,8 +41,8 @@ function selectManyZanrai($where = null) {
 function insertZanrai($object) {
     global $mysqli;
     $query = "INSERT INTO zanrai (fk_Knyga, fk_zanras) VALUE (
-          " . mysqli_real_escape_string($mysqli, $object->fk_Knyga) . ", 
-          " . mysqli_real_escape_string($mysqli, $object->fk_zanras) . "          
+          " . mysqli_real_escape_string($mysqli, $object->fk_Knyga)*1 . ", 
+          " . mysqli_real_escape_string($mysqli, $object->fk_zanras)*1 . "          
         )";
     mysqli_query($mysqli, $query);
 }
@@ -54,8 +54,8 @@ function updateZanrai($object) {
     $query = "UPDATE zanrai SET 
           fk_Knyga=". $object->fk_Knyga . ",
           fk_zanras=" . $object->fk_zanras . "
-          WHERE fk_Knyga = ".mysqli_real_escape_string($mysqli, $object->fk_Knyga)."
-              AND fk_zanras = ".mysqli_real_escape_string($mysqli, $object->fk_zanras);
+          WHERE fk_Knyga = ".mysqli_real_escape_string($mysqli, $object->fk_Knyga)*1 ."
+              AND fk_zanras = ".mysqli_real_escape_string($mysqli, $object->fk_zanras)*1;
     mysqli_query($mysqli, $query);
 }
 //Ištrina elementą iš duombazės

@@ -38,8 +38,8 @@ function selectManyAutoriai($where = null) {
 function insertAutoriai($object) {
     global $mysqli;
     $query = "INSERT INTO Autoriai (fk_Knyga, fk_Autorius) VALUE (
-          " . mysqli_real_escape_string($mysqli, $object->fk_Knyga) . ", 
-          " . mysqli_real_escape_string($mysqli, $object->fk_Autorius) . "          
+          " . mysqli_real_escape_string($mysqli, $object->fk_Knyga)*1 . ", 
+          " . mysqli_real_escape_string($mysqli, $object->fk_Autorius)*1 . "          
         )";
     mysqli_query($mysqli, $query);
 }
@@ -50,8 +50,8 @@ function updateAutoriai($object) {
     $query = "UPDATE Autoriai SET 
           fk_Knyga=" . $object->fk_Knyga . ",
           fk_Autorius=" . $object->fk_Autorius . "
-          WHERE fk_Knyga = ".mysqli_real_escape_string($mysqli, $object->fk_Knyga)."
-          AND fk_Autorius = ".mysqli_real_escape_string($mysqli, $object->fk_Autorius);
+          WHERE fk_Knyga = ".mysqli_real_escape_string($mysqli, $object->fk_Knyga)*1 ."
+          AND fk_Autorius = ".mysqli_real_escape_string($mysqli, $object->fk_Autorius)*1;
     mysqli_query($mysqli, $query);
 }
 //Ištrina elementą iš duombazės

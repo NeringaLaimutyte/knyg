@@ -39,9 +39,9 @@ function selectManyUzsakymas($where = null) {
 function insertUzsakymas($object) {
     global $mysqli;
     $query = "INSERT INTO Uzsakymas (kiekis, fk_Knyga, fk_Knygu_sarasas) VALUE (
-          " . mysqli_real_escape_string($mysqli, $object->kiekis) . ", 
-          " . mysqli_real_escape_string($mysqli, $object->fk_Knyga) . ", 
-          " . mysqli_real_escape_string($mysqli, $object->fk_Knygu_sarasas) . "          
+          " . mysqli_real_escape_string($mysqli, $object->kiekis)*1 . ", 
+          " . mysqli_real_escape_string($mysqli, $object->fk_Knyga)*1 . ", 
+          " . mysqli_real_escape_string($mysqli, $object->fk_Knygu_sarasas)*1 . "          
         )";
     mysqli_query($mysqli, $query);
 }
@@ -50,9 +50,9 @@ function insertUzsakymas($object) {
 function updateUzsakymas($object) {
     global $mysqli;
     $query = "UPDATE Uzsakymas SET 
-          kiekis='" . $object->kiekis . "',
-          fk_Knyga='" . $object->fk_Knyga . "',
-          fk_Knygu_sarasas ='" . $object->fk_Knygu_sarasas . "'
+          kiekis=" . $object->kiekis*1 . ",
+          fk_Knyga=" . $object->fk_Knyga*1 . ",
+          fk_Knygu_sarasas =" . $object->fk_Knygu_sarasas*1 . "
           WHERE id = " . $object->id;
     mysqli_query($mysqli, $query);
 }

@@ -7,7 +7,7 @@ include_once 'models/Vartotojas.php';
     session_start();
     $array = [];
     $array[] = ['Atsijungti', 'logout.php'];
-    $array[] = ['Logai', 'logs.php'];
+    $array[] = ['Logai', 'logai.php'];
     $array[] = ['Rašyti naujieną', 'adminNaujienos.php'];
 
   for ($i = 0; $i < count($array); $i++) {

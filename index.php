@@ -6,6 +6,7 @@
 <body>
 
 <?php
+    //if url = /, go to index.php
     include_once 'log.php';
     include 'meniu.php';
 ?>

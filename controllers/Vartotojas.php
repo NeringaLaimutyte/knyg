@@ -43,12 +43,12 @@ function insertVartotojas($object, $password){
           '".mysqli_real_escape_string($mysqli, $object->el_pastas)."',
           '".mysqli_real_escape_string($mysqli, $password)."',
           '".mysqli_real_escape_string($mysqli, $object->adresas)."',
-          ".mysqli_real_escape_string($mysqli, $object->role).",
-          ".mysqli_real_escape_string($mysqli, $object->isleista_pinigu).",
-          ".mysqli_real_escape_string($mysqli, $object->nupirkta_knygu).",
-          ".mysqli_real_escape_string($mysqli, $object->bonus_pinigai).",
-          ".mysqli_real_escape_string($mysqli, $object->nuolaida).",
-          ".mysqli_real_escape_string($mysqli, $object->bonus_narys)."          
+          ".mysqli_real_escape_string($mysqli, $object->role)*1 .",
+          ".mysqli_real_escape_string($mysqli, $object->isleista_pinigu)*1 .",
+          ".mysqli_real_escape_string($mysqli, $object->nupirkta_knygu)*1 .",
+          ".mysqli_real_escape_string($mysqli, $object->bonus_pinigai)*1 .",
+          ".mysqli_real_escape_string($mysqli, $object->nuolaida)*1 .",
+          ".mysqli_real_escape_string($mysqli, $object->bonus_narys)*1 ."          
         )";
     mysqli_query($mysqli, $query);
 }
@@ -60,13 +60,13 @@ function updateVartotojas($object){
           pavarde='".$object->pavarde."',
           el_pastas='".$object->el_pastas."',
           adresas='".$object->adresas."', 
-          role=".$object->role.", 
-          isleista_pinigu=".$object->isleista_pinigu.", 
-          nupirkta_knygu=".$object->nupirkta_knygu.", 
-          bonus_pinigai=".$object->bonus_pinigai.", 
-          nuolaida=".$object->nuolaida.", 
-          bonus_narys=".$object->bonus_narys.", 
-          WHERE id = ".$object->id;
+          role=".$object->role*1 .", 
+          isleista_pinigu=".$object->isleista_pinigu*1 .", 
+          nupirkta_knygu=".$object->nupirkta_knygu*1 .", 
+          bonus_pinigai=".$object->bonus_pinigai*1 .", 
+          nuolaida=".$object->nuolaida*1 .", 
+          bonus_narys=".$object->bonus_narys*1 .", 
+          WHERE id = ".$object->id*1 ;
     mysqli_query($mysqli, $query);
 }
 //Ištrina elementą iš duombazės
