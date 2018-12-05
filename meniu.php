@@ -24,7 +24,7 @@ include_once 'models/Vartotojas.php';
         }
     }
     $array[] = ['Naujienos', 'naujienos.php'];
-    $array[] = ['Knygų paieška', '#'];
+    $array[] = ['Knygų paieška', 'paieska.php'];
     $array[] = ['Knygos', 'knygos.php'];
 
   for ($i = 0; $i < count($array); $i++) {

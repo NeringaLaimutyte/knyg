@@ -28,7 +28,7 @@ logas($_SERVER['REQUEST_URI']);
   <span class="container">
     <img src="images/ieškotiknygos.jpg" alt="ieškotiknygos" class="image" />
     <div class="middle">
-      <a href="#" class="button">Ieškoti knygos</a>
+      <a href="paieska.php" class="button">Ieškoti knygos</a>
     </div>
   </span>
 </body>
