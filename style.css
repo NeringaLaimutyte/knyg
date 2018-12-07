@@ -103,7 +103,7 @@ table {
  }
 
 table td, table th {
-    border: 1px solid #ddd;
+    border: 1px solid #aaa;
     padding: 8px;
 }
 
@@ -117,4 +117,13 @@ table th {
     text-align: left;
     background-color: #4CAF50;
     color: white;
+}
+.submit{
+    background-color: #269e2b;
+    height: 40px;
+    width: 300px;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
 }

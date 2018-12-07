@@ -9,6 +9,9 @@ function selectAutoriai($fk_Knyga, $fk_Autorius) {
         AND fk_Autorius = ".mysqli_real_escape_string($mysqli, $fk_Autorius);
     if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($row == NULL){
+            return NULL;
+        }
         $temp = new Autoriai($row['fk_Knyga'], $row['fk_Autorius']);
         return $temp;
     }

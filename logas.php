@@ -24,7 +24,7 @@ logas($_SERVER['REQUEST_URI']);
 <div style="text-align: center">
     <h3>Filtrai:<br /><?php
         echo 'nuo '. $_GET['nuoD'].' iki '.$_GET['ikiD'].'<br />nuo '.$_GET['nuoL'].' iki '.$_GET['ikiL'].'<br />
-        IP: '.$_GET['IP'].'<br />URL: '.$_GET['URL'].'<br />Vartotojas: '.$_GET['user'];
+        IP: '.$_GET['IP']/*.'<br />URL: '.$_GET['URL']*/.'<br />Vartotojas: '.$_GET['user'];
         ?></h3>
     <table style="margin-left:auto; margin-right:auto;">
         <tr>
@@ -47,9 +47,9 @@ logas($_SERVER['REQUEST_URI']);
         if($_GET['IP'] != ''){
             $where[] = 'IP = "'.$_GET['nuoD'].'"';
         }
-        if($_GET['URL'] != ''){
+        /*if($_GET['URL'] != ''){
             $where[] = 'URL = "'.$_GET['nuoD'].'"';
-        }
+        }*/
         if($_GET['user'] != ''){
             $where[] = 'fk_Vartotojas = '.$_GET['user'];
         }

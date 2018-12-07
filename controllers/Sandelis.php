@@ -8,6 +8,9 @@ function selectSandelis($id) {
     $query = "SELECT * FROM Sandelis WHERE id = " . $id;
     if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($row == NULL){
+            return NULL;
+        }
         $temp = new Sandelis($row['pavadinimas'], $row['gatve'], $row['miestas'], $row['namo_numeris']);
         $temp->id = $row['id'];
         return $temp;

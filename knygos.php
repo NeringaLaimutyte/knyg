@@ -68,11 +68,7 @@ logas($_SERVER['REQUEST_URI']);
         </div>
         <div>ISBN: <?php echo $knygos[$i]->ISBN_kodas;?></div>
         <div>Kaina: <?php
-        if(count($kaina = selectManyKaina("fk_Knyga=".$knygos[$i]->id." AND PrData < NOW() AND PaData > NOW()")) == 1){
-            echo $kaina[0]->kaina." €";
-        }else{
-            echo selectManyKaina("fk_Knyga=".$knygos[$i]->id." AND PrData < NOW() AND PaData IS NULL")[0]->kaina ." €";
-        }
+        echo latestKaina($knygos[$i]->id)->kaina.' €';
         //SELECT * FROM kaina WHERE fk_Knyga=2 AND PrData < NOW() AND PaData > NOW()
         //SELECT * FROM kaina WHERE fk_Knyga=2 AND PrData < NOW() AND PaData IS NULL
         ?></div>
