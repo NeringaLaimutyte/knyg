@@ -18,7 +18,7 @@ include_once 'models/Vartotojas.php';
         if($_SESSION['user']->getRoles()[0]){
             $array[] = ['Nustatymai', 'nustatymai.php'];
         }
-        $array[] = ['Bonus klubas', 'klubas.php'];
+        $array[] = ['Bonus klubas', 'klubas_main.php'];
         if($_SESSION['user']->getRoles()[3]){
             $array[] = ['Admin panelė', 'admin.php'];
         }
