@@ -8,6 +8,9 @@ function selectUzsakymas($id) {
     $query = "SELECT * FROM Uzsakymas WHERE id = " . $id;
     if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($row == NULL){
+            return NULL;
+        }
         $temp = new Uzsakymas($row['kiekis'], $row['fk_Knyga'], $row['fk_Knygu_sarasas']);
         $temp->id = $row['id'];
         return $temp;

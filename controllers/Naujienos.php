@@ -6,6 +6,9 @@ function selectNaujienos($id){
     $query =  "SELECT * FROM Naujienos WHERE id = ".$id;
     if($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($row == NULL){
+            return NULL;
+        }
         $temp = new Naujienos($row['pavadinimas'], $row['tekstas'], $row['parasymo_data'], $row['publikavimo_data']);
         $temp->id = $row['id'];
         return $temp;
@@ -49,7 +52,6 @@ function updateNaujienos($object){
     $query = "UPDATE Naujienos SET 
           pavadinimas='". mysqli_real_escape_string($mysqli, $object->pavadinimas)."',
           tekstas='". mysqli_real_escape_string($mysqli, $object->tekstas)."',
-          parasymo_data='". mysqli_real_escape_string($mysqli, $object->parasymo_data)."',
           publikavimo_data='". mysqli_real_escape_string($mysqli, $object->publikavimo_data)."'
           WHERE id = ". mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
