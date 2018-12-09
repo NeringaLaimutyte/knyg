@@ -65,7 +65,7 @@ logas($_SERVER['REQUEST_URI']);
 		<td><?php echo $i+1?></td>
         <td><?php echo $kuponai[$i]->suma;?></td>
         <td><?php echo $kuponai[$i]->galiojimo_data;?></td>
-		<td><?php echo "Nėra";?></td>
+		<td><?php echo $kuponai[$i]->kodas;?></td>
    </tr>
 <?php
    }
