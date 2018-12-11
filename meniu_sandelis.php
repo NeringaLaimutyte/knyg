@@ -9,10 +9,10 @@ include_once 'models/Vartotojas.php';
     }
     $array = [];
     $array[] = ['Atsijungti', 'logout.php'];
-    $array[] = ['Ataskaitos', '#'];
+    $array[] = ['Ataskaitos', 'ataskaitos.php'];
     $array[] = ['Likučio peržiūra', 'sandelis_likutis.php'];
     $array[] = ['Inventorizacija', 'sandelis_inventorizacija.php'];
-    $array[] = ['Užsakymas', '#'];
+    $array[] = ['Užsakymas', 'uzsakymas.php'];
     $array[] = ['Priėmimas', 'priemimas.php'];
     $array[] = ['Išdavimas', 'sandelis_isdavimas.php'];
 
