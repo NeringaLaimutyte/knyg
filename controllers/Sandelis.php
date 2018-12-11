@@ -30,7 +30,7 @@ function selectManySandelis($where = null) {
     $query = "SELECT * FROM Sandelis" . $where;
     if ($result = mysqli_query($mysqli, $query)) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $temp = new Sandelis($row['pavadinimas'], $row['gatve'], $row['miestas '], $row['namo_numeris ']);
+            $temp = new Sandelis($row['pavadinimas'], $row['gatve'], $row['miestas'], $row['namo_numeris']);
             $temp->id = $row['id'];
             $results[] = $temp;
         }
