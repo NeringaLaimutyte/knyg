@@ -52,8 +52,9 @@ if(isset($_POST['submit'])){
             $parinkti_zanrai[] = $selected;
         }
     }
-    
-    /*Atrinskim knygas pagal žanrus */
+    if(!empty($parinkti_zanrai))
+    {
+        /*Atrinskim knygas pagal žanrus */
     $knygos_zanrai = selectManyZanrai();
     for($i=0; $i<count($knygos_zanrai); $i++)
     {
@@ -145,5 +146,8 @@ if(isset($_POST['submit'])){
         }
     }
     else echo "Nerasta tokių žanrų knygų";
+    }
+    else echo "Neparinkote žanro";
+    
 }
 ?>
