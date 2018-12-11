@@ -28,7 +28,7 @@ if(!isset($_POST['el_pastas']) || !isset($_POST['pass'])){
     if(count($user) == 1){
         $_SESSION['user'] = $user[0];
         if ($user[0]->role=='4') {
-            header("Location: index_sandelis.php");
+            header("Location: sandelisMeniu.php");
         } else {
             header("Location: index.php");
         }
