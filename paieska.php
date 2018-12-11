@@ -12,8 +12,9 @@
     include_once 'log.php';
     include 'meniu.php';
 ?>
-<div>Žanrai</div>
-<br>
+<div align=center>
+   <h3>Žanrai</h3>
+</div>
 <?php
    include_once 'models/Knyga.php';
    include_once 'controllers/Knyga.php';
@@ -23,23 +24,23 @@
    
    for($i = 0; $i < count($zanrai); $i++){
 ?>
-
+<div align= center>
 <form action="rasti.php" method="post">
 <label><?php echo $zanrai[$i]->pavadinimas;?>
-  <input type="checkbox" name="zanras[]" value=<?php echo $zanrai[$i]->pavadinimas; ?> >
+  <input type="checkbox" name="zanras[]" value="<?php echo $zanrai[$i]->id?>" >
 </label>
 <br>
 <?php
    }
 ?>
 <br>
-Kaina nuo:<input type="number" name="nuo" value="0"><br>
-Kaina iki: <input type="number" name="iki" value="0"><br>
+Kaina nuo:<input type="number" name="nuo" value="" ><br>
+Kaina iki: <input type="number" name="iki" value=""><br>
 <input type="submit" name="submit" value="Ieškoti"/>
 
 
 </form>
-
+</div>
 
 </body>
 </html>

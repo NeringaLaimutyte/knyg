@@ -1,7 +1,5 @@
 <?php
-
 include_once("configuration/config.php");
-
 //Paima 1 elementą iš duombazės pagal jo ID
 function selectKaina($id) {
     global $mysqli;
@@ -14,7 +12,6 @@ function selectKaina($id) {
     }
     return null;
 }
-
 //Paima daug elemetų iš duombazės pagal pateiktą sąlygą
 function selectManyKaina($where = null) {
     global $mysqli;
@@ -34,7 +31,6 @@ function selectManyKaina($where = null) {
     }
     return $results;
 }
-
 //Įterpia elementą į duombazę
 function insertKaina($object) {
     global $mysqli;
@@ -47,7 +43,6 @@ function insertKaina($object) {
         )";
     mysqli_query($mysqli, $query);
 }
-
 //Atnaujina elementą duombazėje
 function updateKaina($object) {
     global $mysqli;
@@ -60,12 +55,10 @@ function updateKaina($object) {
           WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
-
 //Ištrina elementą iš duombazės
 function removeKaina($object) {
     global $mysqli;
     $query = "DELETE FROM Kaina WHERE id = " . mysqli_real_escape_string($mysqli, $object->id);
     mysqli_query($mysqli, $query);
 }
-
 ?>
