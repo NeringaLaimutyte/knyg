@@ -26,7 +26,7 @@
   <span class="container">
     <img src="images/ieškotiknygos.jpg" alt="Išdavimas" class="image" />
     <div class="middle">
-      <a href="#" class="button">Išdavimas</a>
+        <a href="sandelis_isdavimas.php" class="button">Išdavimas</a>
     </div>
   </span>
 </body>
