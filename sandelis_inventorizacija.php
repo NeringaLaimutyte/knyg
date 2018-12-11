@@ -29,7 +29,7 @@ if (!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[2]) {
         include 'meniu_sandelis.php';
         ?>
         <div style="text-align: center">
-            <h3>Knygos:</h3>
+            <h3>Inventorizacija:</h3>
             <table style="margin-left:auto; margin-right:auto;">
                 <tr>
                     <th>Pavadinimas</th><th>Sandėlis</th><th>Kiekis</th><th>Veiksmas</th>
