@@ -13,7 +13,7 @@ include_once 'models/Vartotojas.php';
     $array[] = ['Likučio peržiūra', 'sandelis_likutis.php'];
     $array[] = ['Inventorizacija', 'sandelis_inventorizacija.php'];
     $array[] = ['Užsakymas', '#'];
-    $array[] = ['Priėmimas', '#'];
+    $array[] = ['Priėmimas', 'priemimas.php'];
     $array[] = ['Išdavimas', 'sandelis_isdavimas.php'];
 
   for ($i = 0; $i < count($array); $i++) {
