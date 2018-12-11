@@ -30,7 +30,7 @@ function selectManyKnyguSandelyje($where = null) {
     $query = "SELECT * FROM Knygu_sandelyje" . $where;
     if ($result = mysqli_query($mysqli, $query)) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $temp = new Knygu_sandelyje($row['kiekis'], $row['fk_Sandelis'], $row['fk_Knyga ']);
+            $temp = new Knygu_sandelyje($row['kiekis'], $row['fk_Sandelis'], $row['fk_Knyga']);
             $temp->id = $row['id'];
             $results[] = $temp;
         }
