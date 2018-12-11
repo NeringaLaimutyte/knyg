@@ -1,6 +1,7 @@
 <?php
 
 include_once("configuration/config.php");
+include_once("models/Knygu_sandelyje.php");
 
 //Paima 1 elementą iš duombazės pagal jo ID
 function selectKnyguSandelyje($id) {
