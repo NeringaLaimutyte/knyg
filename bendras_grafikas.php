@@ -16,10 +16,12 @@ if (!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[2]) {
 //$dat1=$_REQUEST['data1'];
 //$dat2=$_REQUEST['data2'];
 //echo $dat2;
+    include 'meniu_sandelis.php';
 ?>
 <!DOCTYPE HTML>
 <html>
-<head>  
+<head>
+    <link rel="stylesheet" href="style.css">
 <script type="text/javascript">
 window.onload = function () {
     var chart = new CanvasJS.Chart("chartContainer",
