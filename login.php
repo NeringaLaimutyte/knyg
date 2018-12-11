@@ -27,7 +27,11 @@ if(!isset($_POST['el_pastas']) || !isset($_POST['pass'])){
     slaptazodis='".md5(mysqli_real_escape_string($mysqli, $_POST['pass']))."';");
     if(count($user) == 1){
         $_SESSION['user'] = $user[0];
-        header("Location: index.php");
+        if ($user[0]->role=='4') {
+            header("Location: index_sandelis.php");
+        } else {
+            header("Location: index.php");
+        }
     }else{
         echo '<h2>Nepavyko prisijungti</h2>'.$form;
     }

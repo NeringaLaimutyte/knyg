@@ -6,6 +6,9 @@ function selectVartotojas($id){
     $query =  "SELECT * FROM Vartotojas WHERE id = ".$id;
     if($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($row == NULL){
+            return NULL;
+        }
         $temp = new Vartotojas($row['vardas'], $row['pavarde'], $row['el_pastas'], $row['adresas'], $row['role'],
             $row['isleista_pinigu'], $row['nupirkta_knygu'], $row['bonus_pinigai'], $row['nuolaida'], $row['bonus_narys']);
         $temp->id = $row['id'];
@@ -65,7 +68,7 @@ function updateVartotojas($object){
           nupirkta_knygu=". mysqli_real_escape_string($mysqli, $object->nupirkta_knygu)*1 .", 
           bonus_pinigai=". mysqli_real_escape_string($mysqli, $object->bonus_pinigai)*1 .", 
           nuolaida=". mysqli_real_escape_string($mysqli, $object->nuolaida)*1 .", 
-          bonus_narys=". mysqli_real_escape_string($mysqli, $object->bonus_narys)*1 .", 
+          bonus_narys=". mysqli_real_escape_string($mysqli, $object->bonus_narys)*1 ."
           WHERE id = ". mysqli_real_escape_string($mysqli, $object->id)*1 ;
     mysqli_query($mysqli, $query);
 }

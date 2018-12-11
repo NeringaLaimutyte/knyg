@@ -40,8 +40,8 @@ logas($_SERVER['REQUEST_URI']);
         <span class="helper">Nuo</span> <input type="time" name="nuoL" value="00:00" /><br />
         <span class="helper">Iki</span> <input type="time" name="ikiL" value="23:59"  /><br />
         <span class="helper">IP</span>  <input type="text" name="IP" /><br />
-        <span class="helper">Vartotojas</span> <input type="number" name="user" value="0" /><br />
-        <span class="helper">URL</span> <input type="text" name="URL" value="/knygynas/" /><br />
+        <span class="helper">Vartotojas</span> <input type="number" name="user" value="" /><br />
+        <!--<span class="helper">URL</span> <input type="text" name="URL" value="/knygynas/" /><br />-->
         Arba palikite tuščias reiškmes visoms reikšmėms<br />
         <input type="submit" value="Rodyti statistiką" />
     </form>

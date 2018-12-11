@@ -8,6 +8,9 @@ function selectLogas($id) {
     $query = "SELECT * FROM Logas WHERE id = " . $id;
     if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($row == NULL){
+            return NULL;
+        }
         $temp = new Logas($row['data'], $row['IP'], $row['URL'], $row['laikas'], $row['fk_Vartotojas']);
         $temp->id = $row['id'];
         return $temp;

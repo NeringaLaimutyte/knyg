@@ -8,6 +8,9 @@ function selectKnyga($id) {
     $query = "SELECT * FROM Knyga WHERE id = " . $id;
     if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($row == NULL){
+            return NULL;
+        }
         $temp = new Knyga($row['pavadinimas'], $row['isleidimo_metai'], $row['kalba'], $row['paveikslelio_nuoroda'],
             $row['aprasymas'], $row['puslapiu_skaicius'], $row['ISBN_kodas'], $row['virselio_tipas'], $row['recenzija']);
         $temp->id = $row['id'];

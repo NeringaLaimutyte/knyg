@@ -8,6 +8,9 @@ function selectKnyguSarasas($id) {
     $query = "SELECT * FROM Knygu_sarasas WHERE id = " . $id;
     if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($row == NULL){
+            return NULL;
+        }
         $temp = new Knygu_sarasas($row['data'], $row['fk_Leidykla'], $row['fk_Sandelis']);
         $temp->id = $row['id'];
         return $temp;

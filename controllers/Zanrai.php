@@ -10,6 +10,9 @@ function selectZanrai($fk_Knyga, $fk_zanras) {
         AND fk_zanras = ".mysqli_real_escape_string($mysqli, $fk_zanras);
     if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($row == NULL){
+            return NULL;
+        }
         $temp = new Zanrai($row['fk_Knyga'], $row['fk_zanras']);
         /*$temp->id = $row['id']; lentele neturi id*/
         return $temp;

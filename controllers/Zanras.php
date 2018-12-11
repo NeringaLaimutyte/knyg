@@ -8,6 +8,9 @@ function selectZanras($id) {
     $query = "SELECT * FROM zanras WHERE id = " . $id;
     if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($row == NULL){
+            return NULL;
+        }
         $temp = new Zanras($row['pavadinimas']);
         $temp->id = $row['id'];
         return $temp;

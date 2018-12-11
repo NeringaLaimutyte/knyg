@@ -8,6 +8,9 @@ function selectLeidykla($id) {
     $query = "SELECT * FROM Leidykla WHERE id = " . $id;
     if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($row == NULL){
+            return NULL;
+        }
         $temp = new Leidykla($row['pavadinimas'], $row['miestas'], $row['el_pasto_adresas'], $row['gatve'], $row['namo_numeris']);
         $temp->id = $row['id'];
         return $temp;

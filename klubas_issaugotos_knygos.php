@@ -21,6 +21,23 @@
     border-top: 1px solid black;
     margin-top: 10px;
 }
+
+.blokas2 {
+	margin:auto;
+	width:200px;
+	text-align:middle;
+}
+
+.mygtukas{
+	border-radius:8px;
+	background-color:Transparent;
+	border-style:solid;
+	border-color:black;
+	font-family:Verdana,Geneva,sans-serif;
+	font-weight: bold;
+	cursor:pointer;
+	margin-top:15px;
+}
 </style>
 </head>
 <body>    
@@ -29,7 +46,7 @@
 logas($_SERVER['REQUEST_URI']);
     include 'meniu.php';
 ?>
-<h1>Knygos</h1>
+<h1>Išsaugotos knygos</h1>
 <?php
    include 'models/Knyga.php';
    include 'controllers/Knyga.php';
@@ -39,26 +56,29 @@ logas($_SERVER['REQUEST_URI']);
    include 'controllers/Zanras.php';
    include 'models/Kaina.php';
    include 'controllers/Kaina.php';
-   $knygos = selectManyKnyga();
+   include 'controllers/Klubas_issaugotos_knygos.php';
    
-   for($i = 0; $i < count($knygos); $i++){
+   $results = selectIssaugotosKnygos($_SESSION["user"]->id);
+   
+   for($i = 0; $i < count($results); $i++){
+	   $knyga = selectKnyga($results[$i]);
 ?>
 
 <div class="blokas">
     <span class="container">
-        <img src="<?php echo $knygos[$i]->paveikslelio_nuoroda;?>" alt="knygos" class="image" style="width:130px;height:200px;margin-left:25px;">
+        <img src="<?php echo $knyga->paveikslelio_nuoroda;?>" alt="knygos" class="image" style="width:130px;height:200px;margin-left:25px;">
     </span>
     <span class="container">
-        <div><?php echo $knygos[$i]->pavadinimas;?></div>
+        <div><?php echo $knyga->pavadinimas;?></div>
         <br>
-        <div><?php echo $knygos[$i]->aprasymas;?></div>
+        <div><?php echo $knyga->aprasymas;?></div>
     </span>
     <span class="container">
-        <div>Išleidimo metai: <?php echo $knygos[$i]->isleidimo_metai;?></div>
-        <div>Kalba: <?php echo $knygos[$i]->kalba;?></div>
+        <div>Išleidimo metai: <?php echo $knyga->isleidimo_metai;?></div>
+        <div>Kalba: <?php echo $knyga->kalba;?></div>
         <div>Žanras:
              <?php 
-                $zanrai = selectManyZanrai("fk_Knyga = ".$knygos[$i]->id); 
+                $zanrai = selectManyZanrai("fk_Knyga = ".$knyga->id); 
                 for($j = 0; $j < count($zanrai); $j++) {
                     $zanras = selectZanras($zanrai[$j]->fk_zanras);
                     echo $zanras->pavadinimas;
@@ -66,18 +86,19 @@ logas($_SERVER['REQUEST_URI']);
                 }
              ?>
         </div>
-        <div>ISBN: <?php echo $knygos[$i]->ISBN_kodas;?></div>
+        <div>ISBN: <?php echo $knyga->ISBN_kodas;?></div>
         <div>Kaina: <?php
-        echo latestKaina($knygos[$i]->id)->kaina.' €';
-        //SELECT * FROM kaina WHERE fk_Knyga=2 AND PrData < NOW() AND PaData > NOW()
-        //SELECT * FROM kaina WHERE fk_Knyga=2 AND PrData < NOW() AND PaData IS NULL
+        echo latestKaina($knyga->id)->kaina.' €';
         ?></div>
     </span>
 </div>
 <?php
    }
    ?>
-
+   
+<div class="blokas2">
+<form action="klubas_main.php"><input type="submit" value="Atgal" style="width:200px;height:60px;" class="mygtukas"></form>  
+</div>
 
 </body>
 </html>

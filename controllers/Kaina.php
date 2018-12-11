@@ -6,6 +6,9 @@ function selectKaina($id) {
     $query = "SELECT * FROM Kaina WHERE id = " . $id;
     if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($row == NULL){
+            return NULL;
+        }
         $temp = new Kaina($row['kaina'], $row['pastaba'], $row['PrData'], $row['PaData'], $row['fk_Knyga']);
         $temp->id = $row['id'];
         return $temp;
@@ -31,6 +34,18 @@ function selectManyKaina($where = null) {
     }
     return $results;
 }
+
+function latestKaina($fk_Knyga){
+    $fk_Knyga *= 1;
+    $result = null;
+    if(count($kaina = selectManyKaina("fk_Knyga=".$fk_Knyga." AND PrData < NOW() AND PaData >= NOW()")) == 1){
+        $result = $kaina[0];
+    }else{
+        $result =  selectManyKaina("fk_Knyga=".$fk_Knyga." AND PrData < NOW() AND PaData IS NULL")[0];
+    }
+    return $result;
+}
+
 //Įterpia elementą į duombazę
 function insertKaina($object) {
     global $mysqli;

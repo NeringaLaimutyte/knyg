@@ -8,6 +8,9 @@ function selectAutorius($id) {
     $query = "SELECT * FROM Autorius WHERE id = " . $id;
     if ($result = mysqli_query($mysqli, $query)) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($row == NULL){
+            return NULL;
+        }
         $temp = new Autorius($row['vardas'], $row['pavarde'], $row['biografija']);
         $temp->id = $row['id'];
         return $temp;
