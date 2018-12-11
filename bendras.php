@@ -33,12 +33,16 @@ if (!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[2]) {
 </html>
 <?php
 if ($_POST != null) {
-    $date1=$_POST['date1'];
-    $date2=$_POST['date2'];
-    if ($date2<$date1) {
-        echo "Netinkamas laikotarpis";
+    $date1 = $_POST['date1'];
+    $date2 = $_POST['date2'];
+    if ($date1 == '' || $date2 == '') {
+        echo "Nepasirinktas laikotarpis";
     } else {
-        header("location: bendras_grafikas.php");
+        if ($date2 < $date1) {
+            echo "Netinkamas laikotarpis";
+        } else {
+            header("location: bendras_grafikas.php");
+        }
     }
 }
 ?>
