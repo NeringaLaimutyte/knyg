@@ -20,7 +20,7 @@
   <span class="container">
     <img src="images/naujienos.jpg" alt="Priėmimas" class="image" />
     <div class="middle">
-      <a href="#" class="button">Priėmimas</a>
+      <a href="priemimas.php" class="button">Priėmimas</a>
     </div>
   </span>
   <span class="container">
