@@ -10,14 +10,14 @@ include_once 'models/Vartotojas.php';
     $array = [];
     $array[] = ['Atsijungti', 'logout.php'];
     $array[] = ['Ataskaitos', '#'];
-    $array[] = ['Likučio peržiūra', '#'];
-    $array[] = ['Inventorizacija', '#'];
+    $array[] = ['Likučio peržiūra', 'sandelis_likutis.php'];
+    $array[] = ['Inventorizacija', 'sandelis_inventorizacija.php'];
+    $array[] = ['Užsakymas', '#'];
+    $array[] = ['Priėmimas', '#'];
+    $array[] = ['Išdavimas', 'sandelis_isdavimas.php'];
 
   for ($i = 0; $i < count($array); $i++) {
       echo "<li style='float:right'><a href='" . $array[$i][1] . "'>" . $array[$i][0] . "</a></li>";
   }
   ?>
-  
-  
-  
 </ul>
