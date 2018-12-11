@@ -30,7 +30,7 @@ function selectManyUzsakymas($where = null) {
     $query = "SELECT * FROM Uzsakymas" . $where;
     if ($result = mysqli_query($mysqli, $query)) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $temp = new Uzsakymas($row['kiekis'], $row['fk_Knyga'], $row['fk_Knygu_sarasas ']);
+            $temp = new Uzsakymas($row['kiekis'], $row['fk_Knyga'], $row['fk_Knygu_sarasas']);
             $temp->id = $row['id'];
             $results[] = $temp;
         }
