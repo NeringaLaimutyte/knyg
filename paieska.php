@@ -13,7 +13,7 @@
     include 'meniu.php';
 ?>
 <div align=center>
-   <h3>Žanrai</h3>
+   <h3>Knygos paieška</h3>
 </div>
 <?php
    include_once 'models/Knyga.php';
@@ -26,6 +26,7 @@
 ?>
 <div align= center>
 <form action="rasti.php" method="post">
+    Žanrai <br />
 <label><?php echo $zanrai[$i]->pavadinimas;?>
   <input type="checkbox" name="zanras[]" value="<?php echo $zanrai[$i]->id?>" >
 </label>

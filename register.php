@@ -22,7 +22,7 @@ if(!isset($_POST['vardas'])){
         <form action="register.php" method="post">
             <input name="vardas" placeholder="vardas" /><br />
             <input name="pavarde" placeholder="pavarde" /><br />
-            <input name="el_pastas" placeholder="el paštas" /><br />
+            <input name="el_pastas" type="email" placeholder="el paštas" /><br />
             <input name="pass1" placeholder="slaptažodis" type="password" /><br />
             <input name="pass2" placeholder="pakartokite slaptažodį" type="password" /><br />
             <input name="adresas" placeholder="adresas" /><br />
