@@ -33,7 +33,7 @@ if(!isset($_POST['vardas'])){
 }elseif($_POST['pass1'] == $_POST['pass2']){
     $user = new Vartotojas($_POST['vardas'], $_POST['pavarde'], $_POST['el_pastas'], $_POST['adresas'], 1);
     insertVartotojas($user, md5($_POST['pass1']));
-    echo "Turbūt pavyko užregistruoti vartotoją";
+    header("Location: login.php");
 }
 ?>
 </body>
