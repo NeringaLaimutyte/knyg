@@ -38,6 +38,18 @@ function selectManyLogas($where = null) {
     return $results;
 }
 
+function selectAllIPs(){
+    global $mysqli;
+    $results = [];
+    $query = "SELECT distinct IP FROM Logas WHERE IP <> '::1' AND IP <> ''";
+    if ($result = mysqli_query($mysqli, $query)) {
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $results[] = $row['IP'];
+        }
+    }
+    return $results;
+
+}
 ///Įterpia elementą į duombazę
 function insertLogas($object) {
     global $mysqli;

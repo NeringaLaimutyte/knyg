@@ -52,8 +52,7 @@ function insertKnyga($object) {
           " . mysqli_real_escape_string($mysqli, $object->puslapiu_skaicius)*1 . ", 
           '" . mysqli_real_escape_string($mysqli, $object->ISBN_kodas) . "', 
           '" . mysqli_real_escape_string($mysqli, $object->virselio_tipas) . "', 
-          " . mysqli_real_escape_string($mysqli, $object->recenzija) . "
-          
+          '" . mysqli_real_escape_string($mysqli, $object->recenzija) . "'          
         )";
     mysqli_query($mysqli, $query);
 }

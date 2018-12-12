@@ -41,7 +41,7 @@ function latestKaina($fk_Knyga){
     if(count($kaina = selectManyKaina("fk_Knyga=".$fk_Knyga." AND PrData < NOW() AND PaData >= NOW()")) == 1){
         $result = $kaina[0];
     }else{
-        $result =  selectManyKaina("fk_Knyga=".$fk_Knyga." AND PrData < NOW() AND PaData IS NULL")[0];
+        $result =  selectManyKaina("fk_Knyga=".$fk_Knyga." AND PrData < NOW() AND PaData IS NULL ORDER BY id DESC")[0];
     }
     return $result;
 }
@@ -49,12 +49,16 @@ function latestKaina($fk_Knyga){
 //Įterpia elementą į duombazę
 function insertKaina($object) {
     global $mysqli;
+    $iki = "'" . mysqli_real_escape_string($mysqli, date('Y-m-d', strtotime($object->PaData))) . "',";
+    if($object->PaData == ''){
+        $iki = "NULL,";
+    }
     $query = "INSERT INTO Kaina (kaina, pastaba, PrData, PaData, fk_Knyga) VALUE (
-          " . mysqli_real_escape_string($mysqli, $object->pavadinimas)*1 . ",  
+          " . mysqli_real_escape_string($mysqli, $object->kaina)*1 . ",  
           '" . mysqli_real_escape_string($mysqli, $object->pastaba) . "',  
           '" . mysqli_real_escape_string($mysqli, date('Y-m-d', strtotime($object->PrData))) . "',  
-          '" . mysqli_real_escape_string($mysqli, date('Y-m-d', strtotime($object->PaData))) . "',  
-          " . mysqli_real_escape_string($mysqli, $object->fk_Knyga)*1 . ",          
+          ".$iki."  
+          " . mysqli_real_escape_string($mysqli, $object->fk_Knyga)*1 . "        
         )";
     mysqli_query($mysqli, $query);
 }

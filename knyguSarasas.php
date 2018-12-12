@@ -28,7 +28,7 @@ if(!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[3]) {
 ?>
 <div style="text-align: center">
     <h3>Knygos:</h3>
-    <button class="submit" id="naujas">Rašyti Naujieną</button><br /><br />
+    <button class="submit" id="naujas">Įrašyti naują knygą</button><br /><br />
     <table style="margin-left:auto; margin-right:auto;">
         <tr>
             <th>Pavadinimas</th><th>Kiekis</th><th>Kaina</th><th>Veiksmas</th>

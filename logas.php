@@ -13,7 +13,8 @@ if(!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[3]) {
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.rawgit.com/lipis/flag-icon-css/master/css/flag-icon.css" />
 </head>
 <body>
 <?php
@@ -53,9 +54,17 @@ logas($_SERVER['REQUEST_URI']);
         if($_GET['user'] != ''){
             $where[] = 'fk_Vartotojas = '.$_GET['user'];
         }
+        $where[] = 'IP <> "::1"';
+        $IPS = selectAllIPs();
+        $countries = [];
+        for($i = 0; $i < count($IPS); $i++){
+            $json = file_get_contents('https://ipstack.com/ipstack_api.php?ip='.$IPS[$i]);
+            $json = json_decode($json, true);
+            $countries[$IPS[$i]] = $json['country_code'];
+        }
         $logs = selectManyLogas(join(" AND ", $where));
         for($i = 0; $i < count($logs); $i++){
-            echo "<tr><td>".$logs[$i]->data.' '.$logs[$i]->laikas."</td><td>".$logs[$i]->URL."</td><td>".$logs[$i]->IP."</td><td>".$logs[$i]->fk_Vartotojas."</td></tr>";
+            echo "<tr><td>".$logs[$i]->data.' '.$logs[$i]->laikas."</td><td>".$logs[$i]->URL."</td><td>".$logs[$i]->IP."<span class='flag-icon flag-icon-".$countries[$logs[$i]->IP]."'></span></td><td>".$logs[$i]->fk_Vartotojas."</td></tr>";
         }
         ?>
     </table>

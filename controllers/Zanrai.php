@@ -68,5 +68,13 @@ function removeZanrai($object) {
         AND fk_zanras = ".mysqli_real_escape_string($mysqli, $object->fk_zanras);
     mysqli_query($mysqli, $query);
 }
-
+function updateKnygosZanrai($fk_Knyga, $zanrai){
+    global $mysqli;
+    $query = "DELETE FROM zanrai WHERE fk_Knyga = ".mysqli_real_escape_string($mysqli, $fk_Knyga);
+    mysqli_query($mysqli, $query);
+    for($i = 0; $i < count($zanrai); $i++){
+        $temp = new Zanrai($fk_Knyga, $zanrai[$i]);
+        insertZanrai($temp);
+    }
+}
 ?>

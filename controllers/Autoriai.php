@@ -64,5 +64,13 @@ function removeAutoriai($object) {
         AND fk_Autorius = ".mysqli_real_escape_string($mysqli, $object->fk_Autorius);
     mysqli_query($mysqli, $query);
 }
-
+function updateKnygosAutoriai($fk_Knyga, $autoriai){
+    global $mysqli;
+    $query = "DELETE FROM Autoriai WHERE fk_Knyga = ".mysqli_real_escape_string($mysqli, $fk_Knyga);
+    mysqli_query($mysqli, $query);
+    for($i = 0; $i < count($autoriai); $i++){
+        $temp = new Autoriai($fk_Knyga, $autoriai[$i]);
+        insertAutoriai($temp);
+    }
+}
 ?>
