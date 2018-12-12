@@ -21,7 +21,7 @@ if (!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[2]) {
         ?>
         <form method="post">
             <div style="text-align: center">
-                <h3>Priėmimas:</h3>
+                <h3>Išduotų (parduotų) knygų kiekio kitimas:</h3>
                 Nuo: <input type="text" name="date1" id="date1" alt="date" class="IP_calendar" title="d/m/Y">
                 iki: <input type="text" name="date2" id="date1" alt="date" class="IP_calendar" title="d/m/Y">
                 <input type='submit'>
