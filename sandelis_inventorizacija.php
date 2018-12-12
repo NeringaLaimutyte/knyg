@@ -42,7 +42,7 @@ if (!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[2]) {
                     echo "<tr><td>" . selectKnyga($sandeliai[$i]->fk_Knyga)->pavadinimas . "</td>"
                             . "<td>" . selectSandelis($sandeliai[$i]->fk_Sandelis)->pavadinimas . "</td>"
                             . "<td>" . selectAmountKnyguSandelyje(selectKnyga($sandeliai[$i]->fk_Knyga)->id) . "</td>"
-                            . "<td><a href='keistiKieki.php?id=" . selectKnyga($sandeliai[$i]->fk_Knyga)->id . "'>Keisti</a></td>";
+                            . "<td><a href='keistiKieki.php?id=" . $sandeliai[$i]->id . "'>Keisti</a></td>";
                 }
                 ?>
             </table>
