@@ -4,7 +4,7 @@ include_once 'models/Vartotojas.php';
 include_once 'controllers/Vartotojas.php';
 include 'log.php';
 logas($_SERVER['REQUEST_URI']);
-//session_start();
+session_start();
 if (!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[2]) {
     header("location: index.php");
     die();
@@ -22,8 +22,8 @@ if (!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[2]) {
     <form method="post">
         <div style="text-align: center">
             <h3>Priėmimas:</h3>
-            Nuo: <input type="text" name="date1" id="date1" alt="date" class="IP_calendar" title="d/m/Y">
-            iki: <input type="text" name="date2" id="date1" alt="date" class="IP_calendar" title="d/m/Y">
+            Nuo: <input type="text" name="date1" id="date1" class="IP_calendar" title="d/m/Y">
+            iki: <input type="text" name="date2" id="date1" class="IP_calendar" title="d/m/Y">
     <input type='submit'>
         </div>
     </form>
@@ -41,6 +41,8 @@ if ($_POST != null) {
         if ($date2 < $date1) {
             echo "Netinkamas laikotarpis";
         } else {
+            $_SESSION['data1']=$date1;
+            $_SESSION['data2']=$date2;
             header("location: bendras_grafikas.php");
         }
     }
