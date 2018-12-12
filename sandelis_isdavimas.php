@@ -38,7 +38,7 @@ if(!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[2]) {
         $sandeliai= selectManyKnyguSandelyje();
         for($i = 0; $i < count($sandeliai); $i++){
             echo "<tr><td><input type='checkbox' name='bo[]' value='$i'></td>";
-            echo "<td>".selectKnyga($sandeliai[$i]->fk_Knyga)->pavadinimas."</td><td>".$sandeliai[$i]->kiekis."</td>";
+            echo "<td>".selectKnyga($sandeliai[$i]->fk_Knyga)->pavadinimas."</td><td>".$sandeliai[$i]->kiekis."</td><td><a href='keistiKieki.php?id=" . $sandeliai[$i]->id . "'>Keisti</a></td>";
             }
         ?>
     </table>
