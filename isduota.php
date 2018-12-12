@@ -41,6 +41,8 @@ if ($_POST != null) {
         if ($date2 < $date1) {
             echo "Netinkamas laikotarpis";
         } else {
+            $_SESSION['data1']=$date1;
+            $_SESSION['data2']=$date2;
             header("location: isduota_grafikas.php");
         }
     }
