@@ -44,7 +44,7 @@ if (!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[2]) {
                         . "<td>" . selectKnyga($orders->fk_Knyga)->pavadinimas . "</td>"
                         . "<td>" . selectKnyga($orders->fk_Knyga)->ISBN_kodas . "</td>"
                         . "<td>" . $orders->kiekis . "</td>"
-                                . "<td><a href='#'>Keisti</a></td>";
+                                . "<td><a href='keistiKieki.php'>Keisti</a></td>";
                     ?>
                 </table>
                 <input type='submit'>
