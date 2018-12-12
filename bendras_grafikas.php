@@ -13,8 +13,10 @@ if (!isset($_SESSION['user']) || !$_SESSION['user']->getRoles()[2]) {
 $dat1 = $_SESSION['data1'];
 $dat2 = $_SESSION['data2'];
 $day= preg_split("/[\s\/]+/", $dat1);
-print_r($day);
-echo $dat2;
+//print_r($day);
+//echo $dat2;
+//$day[2]--;
+$day[1]--;
 include 'meniu_sandelis.php';
 ?>
 <!DOCTYPE HTML>
