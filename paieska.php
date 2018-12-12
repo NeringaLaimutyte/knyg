@@ -21,12 +21,14 @@
    include_once 'models/Zanras.php';
    include_once 'controllers/Zanras.php';
    $zanrai = selectManyZanras();
-   
-   for($i = 0; $i < count($zanrai); $i++){
-?>
+   ?>
+    
 <div align= center>
 <form action="rasti.php" method="post">
     Žanrai <br />
+    <?php
+   for($i = 0; $i < count($zanrai); $i++){
+?>
 <label><?php echo $zanrai[$i]->pavadinimas;?>
   <input type="checkbox" name="zanras[]" value="<?php echo $zanrai[$i]->id?>" >
 </label>
